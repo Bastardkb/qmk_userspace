@@ -1,0 +1,71 @@
+        {
+            "label": "Mouse acceleration",
+            "content": [
+                {
+                    "label": "Acceleration",
+                    "content": [
+                        {
+                            "label": "Enabled",
+                            "type": "toggle",
+                            "content": [
+                                "id_maccel_enabled",
+                                24,
+                                5
+                            ]
+                        },
+                        {
+                            "label": "Takeoff",
+                            "type": "range",
+                            "options": [
+                                0,
+                                60000
+                            ],
+                            "content": [
+                                "id_maccel_takeoff",
+                                24,
+                                1
+                            ]
+                        },
+                        {
+                            "label": "Growth Rate",
+                            "type": "range",
+                            "options": [
+                                0,
+                                60000
+                            ],
+                            "content": [
+                                "id_maccel_growth_rate",
+                                24,
+                                2
+                            ]
+                        },
+                        {
+                            "label": "Offset",
+                            "type": "range",
+                            "options": [
+                                0,
+                                60000
+                            ],
+                            "content": [
+                                "id_maccel_offset",
+                                24,
+                                3
+                            ]
+                        },
+                        {
+                            "label": "Limit",
+                            "type": "range",
+                            "options": [
+                                0,
+                                60000
+                            ],
+                            "content": [
+                                "id_maccel_limit",
+                                24,
+                                4
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
