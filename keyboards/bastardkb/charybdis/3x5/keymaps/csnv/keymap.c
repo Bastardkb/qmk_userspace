@@ -30,6 +30,7 @@ enum charybdis_keymap_layers {
     LAYER_POINTER,
     LAYER_NUMERAL,
     LAYER_SYMBOLS,
+    LAYER_GAME
 };
 
 // Automatically enable sniping-mode on the pointer layer.
@@ -156,6 +157,19 @@ static uint16_t auto_pointer_layer_timer = 0;
     KC_COLN,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS, ______________HOME_ROW_GACS_R______________, \
     KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
                       KC_LPRN, KC_RPRN, KC_UNDS, _______, XXXXXXX
+
+/**
+ * \brief Symbols layer.
+ *
+ * Secondary left-hand layer has shifted symbols in the same locations to reduce
+ * chording when using mods with shifted symbols. `KC_LPRN` is duplicated next to
+ * `KC_RPRN`.
+ */
+#define LAYOUT_LAYER_GAME                                                                     \
+       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, \
+       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT, \
+       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
+                      ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, BSP_NUM
 
 /**
  * \brief Add Home Row mod to a layout.
