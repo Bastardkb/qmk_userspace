@@ -5,7 +5,7 @@
         // ["bastardkb/charybdis/3x6", "vendor"],
         // ["bastardkb/charybdis/3x5", "vendor"],
         // ["bastardkb/dilemma/4x6_4", "vendor"],
-        ["bastardkb/dilemma/3x5_3", "arulson"],
+        ["bastardkb/dilemma/3x5_3", "arulson_default"],
         // ["bastardkb/dilemma/3x5_2", "vendor"],
         // ["bastardkb/scylla", "vendor"],
         // ["bastardkb/tbkmini", "vendor"],
