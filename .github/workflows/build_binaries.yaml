@@ -11,10 +11,10 @@ jobs:
     uses: qmk/.github/.github/workflows/qmk_userspace_build.yml@main
     with:
       qmk_repo: bastardkb/bastardkb-qmk
-      qmk_ref: bkb-master
+      qmk_ref: bkb-develop
 
   publish:
     name: 'QMK Userspace Publish'
-    uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
+    uses: bastardkb/qmk_userspace/.github/workflows/qmk_userspace_publish_develop.yml@develop
     if: always() && !cancelled()
     needs: build

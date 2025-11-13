@@ -7,10 +7,13 @@
         // ["bastardkb/dilemma/4x6_4", "vendor"],
         // ["bastardkb/dilemma/3x5_3", "arulson_default"],
         ["bastardkb/dilemma/3x5_3", "vendor"],
-        ["bastardkb/dilemma/3x5_3", "vendor_modded"]
+        ["bastardkb/dilemma/3x5_3", "vendor_modded"],
         // ["bastardkb/dilemma/3x5_2", "vendor"],
         // ["bastardkb/scylla", "vendor"],
         // ["bastardkb/tbkmini", "vendor"],
         // ["bastardkb/skeletyl", "vendor"]
+
+        ["bastardkb/dilemma/3x5_3_procyon", "vendor"],
+        ["bastardkb/dilemma/4x6_4_procyon", "vendor"]
     ]
 }
