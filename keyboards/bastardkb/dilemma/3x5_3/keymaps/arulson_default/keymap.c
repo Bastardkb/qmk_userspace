@@ -52,7 +52,7 @@ const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC
 
 // This globally defines all key overrides to be used
 const key_override_t *key_overrides[] = {
-  &delete_key_override,
+  &comm_key_override,
   &dot_key_override
 };
 
@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   _______,   _______,   _______,   _______,   KC_PLUS, KC_7,   KC_8,   KC_9,   KC_ASTR,
     KC_LGUI,   KC_LALT,   KC_LSFT,   KC_LCTL,   _______,   KC_DOT,  KC_4,   KC_5,   KC_6,   KC_0,
     _______,   _______,   _______,   _______,   _______,   KC_EQL,  KC_1,   KC_2,   KC_3,   KC_SLSH,
-                          _______,   _______,   _______,   KC_MPLY, CAPSWRD, _______
+                          _______,   _______,   _______,   KC_MPLY, KC_SPC, _______
   ),
 
 
