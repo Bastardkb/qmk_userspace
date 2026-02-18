@@ -1,3 +1,4 @@
 #define CHORDAL_HOLD
-#define TAPPING_TERM 190
+#define TAPPING_TERM 250
+#define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 0

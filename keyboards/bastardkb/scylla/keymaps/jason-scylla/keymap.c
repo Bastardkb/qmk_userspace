@@ -37,6 +37,7 @@ enum custom_keycodes {
     OS_WRDR,
     OS_SWDL,
     OS_SWDR,
+    SYM_PLUS,
 };
 
 enum tap_dances {
@@ -71,9 +72,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [3] = LAYOUT_split_4x6_5(
         KC_TRNS, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5),          S(KC_6), S(KC_7), S(KC_8), S(KC_9), S(KC_0), KC_TRNS,
-        KC_TRNS, S(KC_LBRC), KC_LBRC, S(KC_COMM), KC_EQL, S(KC_EQL),    S(KC_MINS), KC_MINS, S(KC_DOT), KC_RBRC, S(KC_RBRC), KC_TRNS,
-        KC_TRNS, S(KC_BSLS), KC_BSLS, S(KC_SCLN), KC_SCLN, KC_QUOT,     S(KC_QUOT), KC_SLSH, KC_GRV, S(KC_GRV), KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, S(KC_LBRC), KC_LBRC, S(KC_9), S(KC_COMM), KC_GRV,      S(KC_GRV), S(KC_DOT), S(KC_0), KC_RBRC, S(KC_RBRC), KC_TRNS,
+        KC_TRNS, S(KC_BSLS), S(KC_MINS), S(KC_SCLN), KC_SLSH, KC_SCLN,  KC_BSLS, KC_MINS, KC_EQL, SYM_PLUS, S(KC_8), KC_TRNS,
+        KC_BSLS, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5),          S(KC_6), S(KC_7), S(KC_8), KC_BSLS, KC_SLSH, KC_TRNS,
                              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     )
 };
@@ -173,6 +174,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case OS_SWDR:
             if (record->event.pressed) {
                 tap_code16(is_mac() ? A(S(KC_RIGHT)) : C(S(KC_RIGHT)));
+            }
+            return false;
+        case SYM_PLUS:
+            if (record->event.pressed) {
+                tap_code16(S(KC_EQL));
             }
             return false;
     }
