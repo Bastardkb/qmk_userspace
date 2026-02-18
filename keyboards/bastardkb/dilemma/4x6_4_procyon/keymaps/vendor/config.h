@@ -22,3 +22,7 @@
 #define SPLIT_LED_STATE_ENABLE
 
 #define ENCODER_RESOLUTION 4
+
+/* Pointing device: slower cursor (2 = half speed) and Mac-style natural scroll */
+#define POINTING_DEVICE_SPEED_DIVISOR 2
+#define POINTING_DEVICE_SCROLL_INVERT
