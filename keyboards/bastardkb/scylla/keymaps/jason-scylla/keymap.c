@@ -47,7 +47,7 @@ enum tap_dances {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [0] = LAYOUT_split_4x6_5(
-        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,              KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    MO(1),
+        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,              KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TG(1),
         KC_ESC, KC_K,    KC_H,    KC_C,    KC_D,    KC_W,             S(KC_SLSH), KC_U,    KC_O,    KC_Y,    KC_Q,    KC_BSLS,
         KC_TAB, LCTL_T(KC_L),    LALT_T(KC_N),    LGUI_T(KC_S),    LSFT_T(KC_T),    KC_G,             KC_J, LSFT_T(KC_A),    LGUI_T(KC_E),    LALT_T(KC_I),    LCTL_T(KC_X),    S(KC_QUOT),
         KC_CAPS, KC_M,    KC_B,    KC_F,    KC_P,    KC_V,             KC_MINS, KC_QUOT,  KC_COMM, KC_DOT, KC_Z,  KC_TRNS,
@@ -72,8 +72,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [3] = LAYOUT_split_4x6_5(
         KC_TRNS, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5),          S(KC_6), S(KC_7), S(KC_8), S(KC_9), S(KC_0), KC_TRNS,
-        KC_TRNS, S(KC_LBRC), S(KC_LBRC), S(KC_BSLS), S(KC_RBRC), KC_GRV,      S(KC_GRV), S(KC_COMM), KC_SLSH, S(KC_DOT), S(KC_RBRC), KC_TRNS,
-        KC_TRNS, S(KC_BSLS), S(KC_9), S(KC_SCLN), S(KC_0), KC_SCLN,  KC_BSLS, KC_MINS, KC_EQL, SYM_PLUS, S(KC_8), KC_TRNS,
+        KC_TRNS, S(KC_LBRC), S(KC_LBRC), S(KC_BSLS), S(KC_RBRC), KC_GRV,      S(KC_GRV), S(KC_COMM), S(KC_QUOT), S(KC_DOT), KC_BSLS, KC_TRNS,
+        KC_TRNS, S(KC_BSLS), S(KC_9), S(KC_SCLN), S(KC_0), KC_SCLN,    S(KC_SLSH), KC_MINS, KC_EQL, SYM_PLUS, S(KC_8), KC_TRNS,
         KC_BSLS, S(KC_1), KC_LBRC, S(KC_3), KC_RBRC, S(KC_5),          S(KC_6), S(KC_7), KC_COMM, S(KC_MINS), KC_SLSH, KC_TRNS,
                              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     )
