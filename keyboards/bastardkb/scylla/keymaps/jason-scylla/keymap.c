@@ -94,6 +94,32 @@ static bool is_mac(void) {
     return os == OS_MACOS || os == OS_IOS;
 }
 
+static bool process_os_shortcut(
+    keyrecord_t *record,
+    uint16_t mac_keycode,
+    uint16_t other_keycode
+) {
+    uint16_t keycode = is_mac() ? mac_keycode : other_keycode;
+    if (record->event.pressed) {
+        register_code16(keycode);
+    } else {
+        unregister_code16(keycode);
+    }
+    return false;
+}
+
+static bool is_pinky_home_row_mod(uint16_t keycode) {
+    switch (keycode) {
+        case LCTL_T(KC_L):
+        case LCTL_T(KC_X):
+        case LCTL_T(KC_A):
+        case LCTL_T(KC_SCLN):
+            return true;
+        default:
+            return false;
+    }
+}
+
 static bool app_switcher_active = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -110,34 +136,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case OS_UNDO:
-            if (record->event.pressed) {
-                tap_code16(is_mac() ? G(KC_Z) : C(KC_Z));
-            }
-            return false;
+            return process_os_shortcut(record, G(KC_Z), C(KC_Z));
         case OS_REDO:
-            if (record->event.pressed) {
-                if (is_mac()) {
-                    tap_code16(G(S(KC_Z)));
-                } else {
-                    tap_code16(C(KC_Y));
-                }
-            }
-            return false;
+            return process_os_shortcut(record, G(S(KC_Z)), C(KC_Y));
         case OS_CUT:
-            if (record->event.pressed) {
-                tap_code16(is_mac() ? G(KC_X) : C(KC_X));
-            }
-            return false;
+            return process_os_shortcut(record, G(KC_X), C(KC_X));
         case OS_COPY:
-            if (record->event.pressed) {
-                tap_code16(is_mac() ? G(KC_C) : C(KC_C));
-            }
-            return false;
+            return process_os_shortcut(record, G(KC_C), C(KC_C));
         case OS_PASTE:
-            if (record->event.pressed) {
-                tap_code16(is_mac() ? G(KC_V) : C(KC_V));
-            }
-            return false;
+            return process_os_shortcut(record, G(KC_V), C(KC_V));
         case OS_APPN:
             if (record->event.pressed) {
                 if (!app_switcher_active) {
@@ -157,30 +164,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case OS_WRDL:
-            if (record->event.pressed) {
-                tap_code16(is_mac() ? A(KC_LEFT) : C(KC_LEFT));
-            }
-            return false;
+            return process_os_shortcut(record, A(KC_LEFT), C(KC_LEFT));
         case OS_WRDR:
-            if (record->event.pressed) {
-                tap_code16(is_mac() ? A(KC_RIGHT) : C(KC_RIGHT));
-            }
-            return false;
+            return process_os_shortcut(record, A(KC_RIGHT), C(KC_RIGHT));
         case OS_SWDL:
-            if (record->event.pressed) {
-                tap_code16(is_mac() ? A(S(KC_LEFT)) : C(S(KC_LEFT)));
-            }
-            return false;
+            return process_os_shortcut(record, A(S(KC_LEFT)), C(S(KC_LEFT)));
         case OS_SWDR:
-            if (record->event.pressed) {
-                tap_code16(is_mac() ? A(S(KC_RIGHT)) : C(S(KC_RIGHT)));
-            }
-            return false;
+            return process_os_shortcut(record, A(S(KC_RIGHT)), C(S(KC_RIGHT)));
         case SYM_PLUS:
             if (record->event.pressed) {
                 tap_code16(S(KC_EQL));
             }
             return false;
+    }
+    return true;
+}
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    if (is_pinky_home_row_mod(keycode)) {
+        return TAPPING_TERM + 25;
+    }
+    return TAPPING_TERM;
+}
+
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    if (is_pinky_home_row_mod(keycode)) {
+        return false;
     }
     return true;
 }
