@@ -1,4 +1,4 @@
 {
     "userspace_version": "1.0",
-    "build_targets": [["bastardkb/charybdis/3x5", "custom"]]
+    "build_targets": [["bastardkb/charybdis/3x5/splinktegrated_rev3", "custom"]]
 }
