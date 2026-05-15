@@ -129,7 +129,7 @@ static uint16_t auto_pointer_layer_timer = 0;
  * symmetrical to accomodate the left- and right-hand trackball.
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, \
+    XXXXXXX, RM_PREV, RM_TOGG, RM_NEXT, XXXXXXX, XXXXXXX, RM_PREV, RM_TOGG, RM_NEXT, XXXXXXX, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, \
     XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT,  EE_CLR, XXXXXXX, XXXXXXX, XXXXXXX, \
                       _______, KC_MPLY, KC_MSTP, KC_MSTP, KC_MPLY
@@ -139,7 +139,7 @@ static uint16_t auto_pointer_layer_timer = 0;
     QK_BOOT,  EE_CLR, XXXXXXX, DPI_MOD, S_D_MOD, S_D_MOD, DPI_MOD, XXXXXXX,  EE_CLR, QK_BOOT, \
     ______________HOME_ROW_GACS_L______________, XXXXXXX,  VS_DEF, VS_IMPL,  VS_REF, XXXXXXX, \
     _______, CRTSCRX, CRTSCRY, DRGSCRL, SNIPING, SNIPING, DRGSCRL, CRTSCRY, CRTSCRX, _______, \
-                      KC_BTN2, KC_BTN1, KC_BTN3, KC_BTN4, KC_BTN5
+                      MS_BTN2, MS_BTN1, MS_BTN3, MS_BTN4, MS_BTN5
 
 /**
  * \brief Navigation layer.
@@ -266,17 +266,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             caret_scroll_mode_y = record->event.pressed;
             return false;
         case VS_DEF:
-            tap_code(KC_BTN1);
+            tap_code(MS_BTN1);
             wait_ms(10);
             tap_code(KC_F12);
             return false;
         case VS_IMPL:
-            tap_code(KC_BTN1);
+            tap_code(MS_BTN1);
             wait_ms(10);
             tap_code16(LCTL(KC_F12));
             return false;
         case VS_REF:
-            tap_code(KC_BTN1);
+            tap_code(MS_BTN1);
             wait_ms(10);
             tap_code16(LCTL(KC_K));
             wait_ms(10);
