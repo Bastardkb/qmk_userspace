@@ -28,6 +28,7 @@ enum charybdis_keymap_layers {
     LAYER_POINTER,
     LAYER_NUMERAL,
     LAYER_SYMBOLS,
+    LAYER_GAME,
 };
 
 // Custom keycodes
@@ -41,9 +42,11 @@ enum custom_keycodes {
 
 // Combo definitions
 const uint16_t PROGMEM lang_combo[] = {LCTL_T(KC_D), LSFT_T(KC_F), COMBO_END};
+const uint16_t PROGMEM game_toggle_combo[] = {KC_M, KC_COMM, KC_DOT, LT(LAYER_POINTER, KC_SLSH), COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(lang_combo, LGUI(KC_SPC)),
+    COMBO(game_toggle_combo, TG(LAYER_GAME)),
 };
 
 // Caret scroll mode state
@@ -179,6 +182,20 @@ static uint16_t auto_pointer_layer_timer = 0;
                       KC_LPRN, KC_RPRN, KC_UNDS, _______, XXXXXXX
 
 /**
+ * \brief Game layer.
+ *
+ * WASD-style layer for Elden Ring Nightreign and similar games. Left hand has
+ * direct (non-mod-tap) Shift/Ctrl/Tab and the alpha cluster shifted right by
+ * one column. Right hand is transparent so trackball + base layer stay usable.
+ * Toggle via combo on M + , + . + /.
+ */
+#define LAYOUT_LAYER_GAME                                                                     \
+     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_5, _______, _______, _______, _______, _______, \
+    KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_4, _______, _______, _______, _______, _______, \
+    KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_3, _______, _______, _______, _______, _______, \
+                         KC_1,  KC_SPC,    KC_2, _______, _______
+
+/**
  * \brief Add Home Row mod to a layout.
  *
  * Expects a 10-key per row layout.  Adds support for GACS (Gui, Alt, Ctl, Shift)
@@ -235,6 +252,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
+  [LAYER_GAME] = LAYOUT_wrapper(LAYOUT_LAYER_GAME),
 };
 // clang-format on
 
