@@ -1,6 +1,6 @@
 # Charybdis Nano — keymap (ASCII)
 
-Generated from `input/argos_config-export.json`. `·` = transparent, `X/Y` = tap X / hold Y (mod or layer).
+Generated from `input/argos_config-export.json`. `·` = transparent, `X/Y` = tap X / hold Y (mod or layer). `DrgTg` = trackball drag-scroll toggle.
 
 ## Base
 
@@ -28,7 +28,7 @@ Generated from `input/argos_config-export.json`. `·` = transparent, `X/Y` = tap
 │  ·  │  ·  │  ·  │  ·  │  ·  │  ·  │PgUp │PgDn │  ·  │Lock │
 └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
      ┌─────┬─────┬─────┐   ┌─────┬─────┐
-     │Snipe│Drag │ M2  │   │Base │  ·  │
+     │Snipe│DrgTg│ M2  │   │Base │  ·  │
      └─────┴─────┴─────┘   └─────┴─────┘
 ```
 
