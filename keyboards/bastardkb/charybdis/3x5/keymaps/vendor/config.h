@@ -21,6 +21,35 @@
 #    define DYNAMIC_KEYMAP_LAYER_COUNT 7
 #endif // VIA_ENABLE
 
+/* Tap-hold tuning (from Argos export). */
+#define TAPPING_TERM 200
+
+/* Combo tuning (from Argos export). */
+#ifdef COMBO_ENABLE
+#    define COMBO_TERM 50
+#endif // COMBO_ENABLE
+
+/* Trackball DPI steps (from Argos export). */
+#ifdef POINTING_DEVICE_ENABLE
+#    define CHARYBDIS_MINIMUM_DEFAULT_DPI 400
+#    define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 200
+#    define CHARYBDIS_MINIMUM_SNIPING_DPI 200
+#    define CHARYBDIS_SNIPING_DPI_CONFIG_STEP 100
+#endif // POINTING_DEVICE_ENABLE
+
+/* RGB matrix defaults (from Argos export). The board already defines these, so
+ * undef first to avoid -Werror redefinition warnings. */
+#ifdef RGB_MATRIX_ENABLE
+#    undef RGB_MATRIX_DEFAULT_HUE
+#    define RGB_MATRIX_DEFAULT_HUE 0
+#    undef RGB_MATRIX_DEFAULT_SAT
+#    define RGB_MATRIX_DEFAULT_SAT 255
+#    undef RGB_MATRIX_DEFAULT_VAL
+#    define RGB_MATRIX_DEFAULT_VAL 40
+#    undef RGB_MATRIX_DEFAULT_SPD
+#    define RGB_MATRIX_DEFAULT_SPD 40
+#endif // RGB_MATRIX_ENABLE
+
 #ifndef __arm__
 /* Disable unused features. */
 #    define NO_ACTION_ONESHOT

@@ -1,1 +1,3 @@
 VIA_ENABLE = yes
+COMBO_ENABLE = yes
+LAYER_LOCK_ENABLE = yes

@@ -1,0 +1,872 @@
+{
+    "viaProtocolVersion": 0,
+    "argosProtocolVersion": 3,
+    "qmkKeycodesVersion": [
+        0,
+        0,
+        8
+    ],
+    "tapDanceAmount": 50,
+    "comboAmount": 16,
+    "keysPerCombo": 4,
+    "themeId": 16,
+    "rgbBrightness": 40,
+    "rgbEffectSpeed": 40,
+    "rgbEffectType": 10,
+    "rgbHue": 0,
+    "rgbSat": 255,
+    "pointingDeviceType": 2,
+    "defaultDPI": 800,
+    "minimumDefaultDpi": 400,
+    "defaultDPIConfigStep": 200,
+    "snipingDPI": 200,
+    "minimumSnipingDPI": 200,
+    "snipingDPIConfigStep": 100,
+    "defaultDPIMaxSteps": 16,
+    "snipingDPIMaxSteps": 4,
+    "keycodes": [
+        [
+            20,
+            26,
+            8,
+            21,
+            23,
+            16644,
+            17686,
+            17927,
+            16905,
+            17418,
+            29,
+            10267,
+            9222,
+            8729,
+            5,
+            209,
+            0,
+            224,
+            10284,
+            0,
+            17193,
+            18,
+            12,
+            24,
+            28,
+            16659,
+            17679,
+            17934,
+            16909,
+            17419,
+            56,
+            10295,
+            9270,
+            8464,
+            17,
+            9258,
+            0,
+            225,
+            0,
+            0
+        ],
+        [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            30786,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            31867,
+            1,
+            1,
+            1,
+            1,
+            20992,
+            0,
+            1,
+            0,
+            0
+        ],
+        [
+            1,
+            41,
+            2348,
+            1,
+            1,
+            43,
+            224,
+            226,
+            70,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            210,
+            0,
+            32260,
+            32262,
+            0,
+            1,
+            42,
+            82,
+            1,
+            1,
+            40,
+            79,
+            81,
+            80,
+            1,
+            31867,
+            1,
+            78,
+            75,
+            1,
+            20992,
+            0,
+            1,
+            0,
+            0
+        ],
+        [
+            1,
+            30788,
+            30786,
+            30787,
+            1,
+            1,
+            168,
+            170,
+            169,
+            1,
+            0,
+            0,
+            172,
+            171,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0
+        ],
+        [
+            31744,
+            31747,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            31744,
+            31747,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0
+        ],
+        [
+            1,
+            545,
+            1055,
+            558,
+            1,
+            43,
+            549,
+            563,
+            45,
+            1,
+            1,
+            1,
+            546,
+            46,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            38,
+            37,
+            36,
+            1,
+            88,
+            35,
+            34,
+            33,
+            39,
+            31867,
+            32,
+            31,
+            30,
+            1,
+            20992,
+            0,
+            1,
+            0,
+            0
+        ],
+        [
+            1,
+            547,
+            548,
+            565,
+            1,
+            56,
+            53,
+            564,
+            52,
+            1,
+            1,
+            49,
+            557,
+            561,
+            1,
+            1,
+            0,
+            1,
+            44,
+            0,
+            1,
+            542,
+            48,
+            47,
+            1,
+            1,
+            568,
+            551,
+            550,
+            1,
+            31867,
+            51,
+            543,
+            544,
+            1,
+            20992,
+            0,
+            1,
+            0,
+            0
+        ]
+    ],
+    "layerNames": [
+        "base",
+        "function",
+        "navigation",
+        "media",
+        "pointer",
+        "numeral",
+        "symbols"
+    ],
+    "combos": [
+        {
+            "enabled": true,
+            "output": 40,
+            "input": [
+                8729,
+                9222,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 43,
+            "input": [
+                10267,
+                9222,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 42,
+            "input": [
+                20,
+                26,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 2117,
+            "input": [
+                8464,
+                9270,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        },
+        {
+            "enabled": true,
+            "output": 0,
+            "input": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "customTerm": 0
+        }
+    ],
+    "tapDances": [
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        },
+        {
+            "on_tap": 0,
+            "on_hold": 0,
+            "on_double_tap": 0,
+            "on_tap_hold": 0,
+            "custom_tapping_term": 0
+        }
+    ],
+    "rows": 8,
+    "cols": 5,
+    "hasDisplayedWelcomeMessage": true,
+    "tappingTerm": 200,
+    "comboTerm": 50,
+    "isVIAOnly": false,
+    "isLeftHanded": false,
+    "autoMouseLayerEnabled": false,
+    "autoPrecisionOnMouseLayerEnabled": false,
+    "rgbMatrix": {}
+}
