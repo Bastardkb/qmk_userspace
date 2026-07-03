@@ -59,6 +59,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
+#    define DRG_TOG KC_NO
 #    define DPI_MOD KC_NO
 #    define S_D_MOD KC_NO
 #    define SNIPING KC_NO
@@ -122,7 +123,7 @@ static uint16_t auto_pointer_layer_timer = 0;
     _______,  KC_ESC, LCTL(LGUI(KC_SPC)), _______, _______, _______, _______,   KC_UP, KC_BSPC, _______, \
      KC_TAB, KC_LCTL, KC_LALT, KC_PSCR, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT,  KC_ENT, \
     _______, _______, _______, _______, _______, _______, KC_PGUP, KC_PGDN, _______, QK_LLCK, \
-                      SNIPING, DRGSCRL, KC_BTN2, TO(LAYER_BASE), _______
+                      SNIPING, DRG_TOG, KC_BTN2, TO(LAYER_BASE), _______
 
 /**
  * \brief Media / RGB layer (left-hand cluster, for the right-hand trackball).
