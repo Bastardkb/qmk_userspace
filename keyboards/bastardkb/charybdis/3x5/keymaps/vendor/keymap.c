@@ -14,6 +14,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/*
+ * Personal Charybdis Nano (3x5) keymap.
+ *
+ * Reconstructed from an Argos configurator export
+ * (input/argos_config-export.json).  Same 7-layer scheme as the stock
+ * vendor keymap, but with a personalised base layer:
+ *   - Home row holds LAYER-taps (not mods): the ten home keys each drop
+ *     into a layer when held.
+ *   - Bottom row holds MOD-taps (GACS split across both hands).
+ *   - Mouse buttons live on the thumbs / navigation layer.
+ */
 #include QMK_KEYBOARD_H
 
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
@@ -45,13 +57,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
-#define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
-#define TAB_FUN LT(LAYER_FUNCTION, KC_TAB)
-#define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
-#define BSP_NUM LT(LAYER_NUMERAL, KC_BSPC)
-#define _L_PTR(KC) LT(LAYER_POINTER, KC)
-
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
 #    define DPI_MOD KC_NO
@@ -59,161 +64,142 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
+// Home-row layer-taps (tap = letter, hold = layer).
+#define HR_A LT(LAYER_FUNCTION,   KC_A)
+#define HR_S LT(LAYER_NUMERAL,    KC_S)
+#define HR_D LT(LAYER_SYMBOLS,    KC_D)
+#define HR_F LT(LAYER_NAVIGATION, KC_F)
+#define HR_G LT(LAYER_POINTER,    KC_G)
+#define HR_H LT(LAYER_POINTER,    KC_H)
+#define HR_J LT(LAYER_NAVIGATION, KC_J)
+#define HR_K LT(LAYER_SYMBOLS,    KC_K)
+#define HR_L LT(LAYER_NUMERAL,    KC_L)
+#define HR_P LT(LAYER_FUNCTION,   KC_P)
+// Right pinky top: tap = Esc, hold = media layer.
+#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
+
+// Bottom-row mod-taps (tap = letter, hold = modifier).
+#define MT_X LGUI_T(KC_X)
+#define MT_C LALT_T(KC_C)
+#define MT_V LSFT_T(KC_V)
+// NOTE: the export uses LEFT-hand mods on the right hand (as-is from Argos).
+// Consider switching these to RCTL_T/RALT_T/RGUI_T for cleaner cross-hand
+// chording if you hit same-hand modifier quirks.
+#define MT_M LCTL_T(KC_M)
+#define MT_COMM LALT_T(KC_COMM)
+#define MT_DOT LGUI_T(KC_DOT)
+
 // clang-format off
-/** \brief QWERTY layout (3 rows, 10 columns). */
-#define LAYOUT_LAYER_BASE                                                                     \
-       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, \
-       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT, \
-       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
-                      ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, BSP_NUM
-
-/** Convenience row shorthands. */
-#define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define ______________HOME_ROW_GACS_L______________ KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX
-#define ______________HOME_ROW_GACS_R______________ XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI
-
-/*
- * Layers used on the Charybdis Nano.
+/**
+ * \brief Base layer.
  *
- * These layers started off heavily inspired by the Miryoku layout, but trimmed
- * down and tailored for a stock experience that is meant to be fundation for
- * further personalization.
- *
- * See https://github.com/manna-harbour/miryoku for the original layout.
+ *   Q     W     E     R     T          Y     U     I     O   Esc/media
+ *   A     S     D     F     G          H     J     K     L     P        (home-row layer-taps)
+ *   Z     X     C     V     B          N     M     ,     .     /        (bottom-row mod-taps)
+ *            Ctl  Gui/Spc Btn1     Alt/Bspc  Sft
  */
+#define LAYOUT_LAYER_BASE                                                             \
+       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O, ESC_MED, \
+       HR_A,    HR_S,    HR_D,    HR_F,    HR_G,    HR_H,    HR_J,    HR_K,    HR_L,    HR_P, \
+       KC_Z,    MT_X,    MT_C,    MT_V,    KC_B,    KC_N,    MT_M, MT_COMM,  MT_DOT, KC_SLSH, \
+                     KC_LCTL, LGUI_T(KC_SPC), KC_BTN1, LALT_T(KC_BSPC), KC_LSFT
 
 /**
- * \brief Function layer.
- *
- * Secondary right-hand layer has function keys mirroring the numerals on the
- * primary layer with extras on the pinkie column, plus system keys on the inner
- * column. App is on the tertiary thumb key and other thumb keys are duplicated
- * from the base layer to enable auto-repeat.
+ * \brief Function layer (mostly unused for now — extend as needed).
  */
 #define LAYOUT_LAYER_FUNCTION                                                                 \
-    _______________DEAD_HALF_ROW_______________, KC_PSCR,   KC_F7,   KC_F8,   KC_F9,  KC_F12, \
-    ______________HOME_ROW_GACS_L______________, KC_SCRL,   KC_F4,   KC_F5,   KC_F6,  KC_F11, \
-    _______________DEAD_HALF_ROW_______________, KC_PAUS,   KC_F1,   KC_F2,   KC_F3,  KC_F10, \
-                      XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX
-
-/**
- * \brief Media layer.
- *
- * Tertiary left- and right-hand layer is media and RGB control.  This layer is
- * symmetrical to accomodate the left- and right-hand trackball.
- */
-#define LAYOUT_LAYER_MEDIA                                                                    \
-    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, \
-    KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, \
-    XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT,  EE_CLR, XXXXXXX, XXXXXXX, XXXXXXX, \
-                      _______, KC_MPLY, KC_MSTP, KC_MSTP, KC_MPLY
-
-/** \brief Mouse emulation and pointer functions. */
-#define LAYOUT_LAYER_POINTER                                                                  \
-    QK_BOOT,  EE_CLR, XXXXXXX, DPI_MOD, S_D_MOD, S_D_MOD, DPI_MOD, XXXXXXX,  EE_CLR, QK_BOOT, \
-    ______________HOME_ROW_GACS_L______________, ______________HOME_ROW_GACS_R______________, \
-    _______, DRGSCRL, SNIPING, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, _______, \
-                      KC_BTN2, KC_BTN1, KC_BTN3, KC_BTN3, KC_BTN1
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, QK_LLCK, \
+                      _______, RGB_RMOD, _______, TO(LAYER_BASE), _______
 
 /**
  * \brief Navigation layer.
  *
- * Primary right-hand layer (left home thumb) is navigation and editing. Cursor
- * keys are on the home position, line and page movement below, clipboard above,
- * caps lock and insert on the inner column. Thumb keys are duplicated from the
- * base layer to avoid having to layer change mid edit and to enable auto-repeat.
+ * Arrows form an inverted-T on the right home cluster; editing/clipboard extras
+ * around them.  Left-hand thumbs expose sniping / drag-scroll / right-click.
  */
 #define LAYOUT_LAYER_NAVIGATION                                                               \
-    _______________DEAD_HALF_ROW_______________, _______________DEAD_HALF_ROW_______________, \
-    ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, \
-    _______________DEAD_HALF_ROW_______________,  KC_INS, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, \
-                      XXXXXXX, _______, XXXXXXX,  KC_ENT, KC_BSPC
+    _______,  KC_ESC, LCTL(LGUI(KC_SPC)), _______, _______, _______, _______,   KC_UP, KC_BSPC, _______, \
+     KC_TAB, KC_LCTL, KC_LALT, KC_PSCR, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT,  KC_ENT, \
+    _______, _______, _______, _______, _______, _______, KC_PGUP, KC_PGDN, _______, QK_LLCK, \
+                      SNIPING, DRGSCRL, KC_BTN2, TO(LAYER_BASE), _______
 
 /**
- * \brief Numeral layout.
+ * \brief Media / RGB layer (left-hand cluster, for the right-hand trackball).
+ */
+#define LAYOUT_LAYER_MEDIA                                                                    \
+    _______, RGB_HUD, RGB_RMOD, RGB_HUI, _______, _______, _______, _______, _______, _______, \
+    _______, KC_MPLY, KC_MPRV, KC_MSTP, _______, _______, _______, _______, _______, _______, \
+    XXXXXXX, XXXXXXX, KC_MUTE, KC_MNXT, _______, _______, _______, _______, _______, _______, \
+                      _______, _______, _______, _______, _______
+
+/**
+ * \brief Pointer layer (reset keys in the corners; mouse keys live elsewhere).
+ */
+#define LAYOUT_LAYER_POINTER                                                                  \
+    QK_BOOT,  EE_CLR, _______, _______, _______, _______, _______, _______,  EE_CLR, QK_BOOT, \
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+                      _______, _______, _______, _______, _______
+
+/**
+ * \brief Numeral layer.
  *
- * Primary left-hand layer (right home thumb) is numerals and symbols. Numerals
- * are in the standard numpad locations with symbols in the remaining positions.
- * `KC_DOT` is duplicated from the base layer.
+ * Numpad-style digits on the right hand; assorted symbols on the left.
  */
 #define LAYOUT_LAYER_NUMERAL                                                                  \
-    KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC, _______________DEAD_HALF_ROW_______________, \
-    KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL, ______________HOME_ROW_GACS_R______________, \
-     KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS, _______________DEAD_HALF_ROW_______________, \
-                       KC_DOT,    KC_0, KC_MINS, XXXXXXX, _______
+    _______,  KC_DLR, LALT(KC_2), KC_PLUS, _______, _______,    KC_7,    KC_8,    KC_9, _______, \
+     KC_TAB, KC_ASTR, KC_COLN, KC_MINS, _______,    KC_0,    KC_4,    KC_5,    KC_6, KC_KP_ENT, \
+    _______, _______, KC_PERC,  KC_EQL, _______, _______,    KC_1,    KC_2,    KC_3, QK_LLCK, \
+                      _______, _______, _______, TO(LAYER_BASE), _______
 
 /**
  * \brief Symbols layer.
- *
- * Secondary left-hand layer has shifted symbols in the same locations to reduce
- * chording when using mods with shifted symbols. `KC_LPRN` is duplicated next to
- * `KC_RPRN`.
  */
 #define LAYOUT_LAYER_SYMBOLS                                                                  \
-    KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, _______________DEAD_HALF_ROW_______________, \
-    KC_COLN,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS, ______________HOME_ROW_GACS_R______________, \
-    KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
-                      KC_LPRN, KC_RPRN, KC_UNDS, _______, XXXXXXX
-
-/**
- * \brief Add Home Row mod to a layout.
- *
- * Expects a 10-key per row layout.  Adds support for GACS (Gui, Alt, Ctl, Shift)
- * home row.  The layout passed in parameter must contain at least 20 keycodes.
- *
- * This is meant to be used with `LAYER_ALPHAS_QWERTY` defined above, eg.:
- *
- *     HOME_ROW_MOD_GACS(LAYER_ALPHAS_QWERTY)
- */
-#define _HOME_ROW_MOD_GACS(                                            \
-    L00, L01, L02, L03, L04, R05, R06, R07, R08, R09,                  \
-    L10, L11, L12, L13, L14, R15, R16, R17, R18, R19,                  \
-    ...)                                                               \
-             L00,         L01,         L02,         L03,         L04,  \
-             R05,         R06,         R07,         R08,         R09,  \
-      LGUI_T(L10), LALT_T(L11), LCTL_T(L12), LSFT_T(L13),        L14,  \
-             R15,  RSFT_T(R16), RCTL_T(R17), LALT_T(R18), RGUI_T(R19), \
-      __VA_ARGS__
-#define HOME_ROW_MOD_GACS(...) _HOME_ROW_MOD_GACS(__VA_ARGS__)
-
-/**
- * \brief Add pointer layer keys to a layout.
- *
- * Expects a 10-key per row layout.  The layout passed in parameter must contain
- * at least 30 keycodes.
- *
- * This is meant to be used with `LAYER_ALPHAS_QWERTY` defined above, eg.:
- *
- *     POINTER_MOD(LAYER_ALPHAS_QWERTY)
- */
-#define _POINTER_MOD(                                                  \
-    L00, L01, L02, L03, L04, R05, R06, R07, R08, R09,                  \
-    L10, L11, L12, L13, L14, R15, R16, R17, R18, R19,                  \
-    L20, L21, L22, L23, L24, R25, R26, R27, R28, R29,                  \
-    ...)                                                               \
-             L00,         L01,         L02,         L03,         L04,  \
-             R05,         R06,         R07,         R08,         R09,  \
-             L10,         L11,         L12,         L13,         L14,  \
-             R15,         R16,         R17,         R18,         R19,  \
-      _L_PTR(L20),        L21,         L22,         L23,         L24,  \
-             R25,         R26,         R27,         R28,  _L_PTR(R29), \
-      __VA_ARGS__
-#define POINTER_MOD(...) _POINTER_MOD(__VA_ARGS__)
+    _______, KC_CIRC, KC_AMPR, KC_TILD, _______, _______, KC_LBRC, KC_RBRC, KC_EXLM, _______, \
+    KC_SLSH,  KC_GRV, KC_DQUO, KC_QUOT, _______, _______, KC_LPRN, KC_RPRN, KC_QUES, _______, \
+    _______, KC_BSLS, KC_UNDS, KC_PIPE, _______, _______, KC_HASH,   KC_AT, KC_SCLN, QK_LLCK, \
+                      _______,  KC_SPC, _______, TO(LAYER_BASE), _______
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [LAYER_BASE] = LAYOUT_wrapper(
-    POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
-  ),
-  [LAYER_FUNCTION] = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
+  [LAYER_BASE]       = LAYOUT_wrapper(LAYOUT_LAYER_BASE),
+  [LAYER_FUNCTION]   = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
-  [LAYER_MEDIA] = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
-  [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
-  [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
-  [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
+  [LAYER_MEDIA]      = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
+  [LAYER_POINTER]    = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
+  [LAYER_NUMERAL]    = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
+  [LAYER_SYMBOLS]    = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
 };
 // clang-format on
+
+#ifdef COMBO_ENABLE
+// Combos, transcribed from the Argos export.  They fire on the *base* keycodes,
+// so mod-tap/layer-tap wrappers must be spelled out in full.
+enum combos {
+    COMBO_CV_ENT,   // C + V           -> Enter
+    COMBO_XC_TAB,   // X + C           -> Tab
+    COMBO_QW_BSPC,  // Q + W           -> Backspace
+    COMBO_MCOMM,    // M + ,           -> Gui+F12 (custom shortcut from export)
+};
+
+const uint16_t PROGMEM combo_cv[]    = {MT_C, MT_V, COMBO_END};
+const uint16_t PROGMEM combo_xc[]    = {MT_X, MT_C, COMBO_END};
+const uint16_t PROGMEM combo_qw[]    = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_mcomm[] = {MT_M, MT_COMM, COMBO_END};
+
+combo_t key_combos[] = {
+    [COMBO_CV_ENT]  = COMBO(combo_cv, KC_ENT),
+    [COMBO_XC_TAB]  = COMBO(combo_xc, KC_TAB),
+    [COMBO_QW_BSPC] = COMBO(combo_qw, KC_BSPC),
+    [COMBO_MCOMM]   = COMBO(combo_mcomm, LGUI(KC_F12)),
+};
+
+uint16_t COMBO_LEN = sizeof(key_combos) / sizeof(key_combos[0]);
+#endif // COMBO_ENABLE
 
 #ifdef POINTING_DEVICE_ENABLE
 #    ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
