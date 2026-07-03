@@ -78,6 +78,10 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define HR_P LT(LAYER_FUNCTION,   KC_P)
 // Right pinky top: tap = Esc, hold = media layer.
 #define ESC_MED LT(LAYER_MEDIA, KC_ESC)
+// Right inner thumb: hold = Left Alt, tap = Gui+F12.
+// The placeholder tap (F12) is remapped to Gui+F12 in process_record_user,
+// since a mod-tap can only carry a basic keycode.
+#define ALT_F12 LALT_T(KC_F12)
 
 // Bottom-row mod-taps (tap = letter, hold = modifier).
 #define MT_X LGUI_T(KC_X)
@@ -96,13 +100,13 @@ static uint16_t auto_pointer_layer_timer = 0;
  *   Q     W     E     R     T          Y     U     I     O   Esc/media
  *   A     S     D     F     G          H     J     K     L     P        (home-row layer-taps)
  *   Z     X     C     V     B          N     M     ,     .     /        (bottom-row mod-taps)
- *            Ctl  Gui/Spc Btn1     Alt/Bspc  Sft
+ *            Ctl  Gui/Spc Btn1     Alt/Gui+F12  Sft
  */
 #define LAYOUT_LAYER_BASE                                                             \
        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O, ESC_MED, \
        HR_A,    HR_S,    HR_D,    HR_F,    HR_G,    HR_H,    HR_J,    HR_K,    HR_L,    HR_P, \
        KC_Z,    MT_X,    MT_C,    MT_V,    KC_B,    KC_N,    MT_M, MT_COMM,  MT_DOT, KC_SLSH, \
-                     OSM(MOD_LCTL), LGUI_T(KC_SPC), KC_BTN1, LALT_T(KC_BSPC), OSM(MOD_LSFT)
+                     OSM(MOD_LCTL), LGUI_T(KC_SPC), KC_BTN1, ALT_F12, OSM(MOD_LSFT)
 
 /**
  * \brief Function layer (mostly unused for now — extend as needed).
@@ -183,23 +187,33 @@ enum combos {
     COMBO_CV_ENT,   // C + V           -> Enter
     COMBO_XC_TAB,   // X + C           -> Tab
     COMBO_QW_BSPC,  // Q + W           -> Backspace
-    COMBO_MCOMM,    // M + ,           -> Gui+F12 (custom shortcut from export)
 };
 
-const uint16_t PROGMEM combo_cv[]    = {MT_C, MT_V, COMBO_END};
-const uint16_t PROGMEM combo_xc[]    = {MT_X, MT_C, COMBO_END};
-const uint16_t PROGMEM combo_qw[]    = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM combo_mcomm[] = {MT_M, MT_COMM, COMBO_END};
+const uint16_t PROGMEM combo_cv[] = {MT_C, MT_V, COMBO_END};
+const uint16_t PROGMEM combo_xc[] = {MT_X, MT_C, COMBO_END};
+const uint16_t PROGMEM combo_qw[] = {KC_Q, KC_W, COMBO_END};
 
 combo_t key_combos[] = {
     [COMBO_CV_ENT]  = COMBO(combo_cv, KC_ENT),
     [COMBO_XC_TAB]  = COMBO(combo_xc, KC_TAB),
     [COMBO_QW_BSPC] = COMBO(combo_qw, KC_BSPC),
-    [COMBO_MCOMM]   = COMBO(combo_mcomm, LGUI(KC_F12)),
 };
 
 uint16_t COMBO_LEN = sizeof(key_combos) / sizeof(key_combos[0]);
 #endif // COMBO_ENABLE
+
+// Remap the tap of the right inner thumb (ALT_F12) to Gui+F12; hold stays Alt.
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case ALT_F12:
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(LGUI(KC_F12));
+                return false;
+            }
+            break;
+    }
+    return true;
+}
 
 #ifdef POINTING_DEVICE_ENABLE
 #    ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
