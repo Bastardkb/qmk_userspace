@@ -111,7 +111,7 @@ static uint16_t auto_pointer_layer_timer = 0;
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, QK_LLCK, \
-                      _______, RGB_RMOD, _______, TO(LAYER_BASE), _______
+                      _______, RM_PREV, _______, TO(LAYER_BASE), _______
 
 /**
  * \brief Navigation layer.
@@ -129,7 +129,7 @@ static uint16_t auto_pointer_layer_timer = 0;
  * \brief Media / RGB layer (left-hand cluster, for the right-hand trackball).
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    _______, RGB_HUD, RGB_RMOD, RGB_HUI, _______, _______, _______, _______, _______, _______, \
+    _______, RM_HUED, RM_PREV, RM_HUEU, _______, _______, _______, _______, _______, _______, \
     _______, KC_MPLY, KC_MPRV, KC_MSTP, _______, _______, _______, _______, _______, _______, \
     XXXXXXX, XXXXXXX, KC_MUTE, KC_MNXT, _______, _______, _______, _______, _______, _______, \
                       _______, _______, _______, _______, _______
@@ -150,7 +150,7 @@ static uint16_t auto_pointer_layer_timer = 0;
  */
 #define LAYOUT_LAYER_NUMERAL                                                                  \
     _______,  KC_DLR, LALT(KC_2), KC_PLUS, _______, _______,    KC_7,    KC_8,    KC_9, _______, \
-     KC_TAB, KC_ASTR, KC_COLN, KC_MINS, _______,    KC_0,    KC_4,    KC_5,    KC_6, KC_KP_ENT, \
+     KC_TAB, KC_ASTR, KC_COLN, KC_MINS, _______,    KC_0,    KC_4,    KC_5,    KC_6, KC_PENT, \
     _______, _______, KC_PERC,  KC_EQL, _______, _______,    KC_1,    KC_2,    KC_3, QK_LLCK, \
                       _______, _______, _______, TO(LAYER_BASE), _______
 

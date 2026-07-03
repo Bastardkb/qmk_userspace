@@ -37,11 +37,16 @@
 #    define CHARYBDIS_SNIPING_DPI_CONFIG_STEP 100
 #endif // POINTING_DEVICE_ENABLE
 
-/* RGB matrix defaults (from Argos export). */
+/* RGB matrix defaults (from Argos export). The board already defines these, so
+ * undef first to avoid -Werror redefinition warnings. */
 #ifdef RGB_MATRIX_ENABLE
+#    undef RGB_MATRIX_DEFAULT_HUE
 #    define RGB_MATRIX_DEFAULT_HUE 0
+#    undef RGB_MATRIX_DEFAULT_SAT
 #    define RGB_MATRIX_DEFAULT_SAT 255
+#    undef RGB_MATRIX_DEFAULT_VAL
 #    define RGB_MATRIX_DEFAULT_VAL 40
+#    undef RGB_MATRIX_DEFAULT_SPD
 #    define RGB_MATRIX_DEFAULT_SPD 40
 #endif // RGB_MATRIX_ENABLE
 
