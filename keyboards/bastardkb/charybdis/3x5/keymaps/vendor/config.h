@@ -35,6 +35,10 @@
 #    define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 200
 #    define CHARYBDIS_MINIMUM_SNIPING_DPI 200
 #    define CHARYBDIS_SNIPING_DPI_CONFIG_STEP 100
+
+/* Drag-scroll: natural (reversed) vertical direction, 2x speed (default DPI 100). */
+#    define CHARYBDIS_DRAGSCROLL_REVERSE_Y
+#    define CHARYBDIS_DRAGSCROLL_DPI 200
 #endif // POINTING_DEVICE_ENABLE
 
 /* RGB matrix defaults (from Argos export). The board already defines these, so
