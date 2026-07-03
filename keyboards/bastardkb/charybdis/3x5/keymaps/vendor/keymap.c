@@ -101,7 +101,7 @@ static uint16_t auto_pointer_layer_timer = 0;
        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O, ESC_MED, \
        HR_A,    HR_S,    HR_D,    HR_F,    HR_G,    HR_H,    HR_J,    HR_K,    HR_L,    HR_P, \
        KC_Z,    MT_X,    MT_C,    MT_V,    KC_B,    KC_N,    MT_M, MT_COMM,  MT_DOT, KC_SLSH, \
-                     KC_LCTL, LGUI_T(KC_SPC), KC_BTN1, LALT_T(KC_BSPC), KC_LSFT
+                     OSM(MOD_LCTL), LGUI_T(KC_SPC), KC_BTN1, LALT_T(KC_BSPC), OSM(MOD_LSFT)
 
 /**
  * \brief Function layer (mostly unused for now — extend as needed).
