@@ -82,12 +82,11 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define MT_X LGUI_T(KC_X)
 #define MT_C LALT_T(KC_C)
 #define MT_V LSFT_T(KC_V)
-// NOTE: the export uses LEFT-hand mods on the right hand (as-is from Argos).
-// Consider switching these to RCTL_T/RALT_T/RGUI_T for cleaner cross-hand
-// chording if you hit same-hand modifier quirks.
-#define MT_M LCTL_T(KC_M)
-#define MT_COMM LALT_T(KC_COMM)
-#define MT_DOT LGUI_T(KC_DOT)
+// Right-hand mods use the RIGHT-hand modifiers for clean cross-hand chording
+// (the export used left-hand mods here; switched to R* variants).
+#define MT_M RCTL_T(KC_M)
+#define MT_COMM RALT_T(KC_COMM)
+#define MT_DOT RGUI_T(KC_DOT)
 
 // clang-format off
 /**
