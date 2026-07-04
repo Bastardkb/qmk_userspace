@@ -41,6 +41,9 @@
 /* Drag-scroll: natural (reversed) vertical direction, 2x speed (default DPI 100). */
 #    define CHARYBDIS_DRAGSCROLL_REVERSE_Y
 #    define CHARYBDIS_DRAGSCROLL_DPI 200
+
+/* Allow 16-bit pointer deltas so trackball acceleration isn't clamped to +/-127. */
+#    define MOUSE_EXTENDED_REPORT
 #endif // POINTING_DEVICE_ENABLE
 
 /* RGB matrix defaults (from Argos export). The board already defines these, so
