@@ -216,8 +216,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 #ifdef POINTING_DEVICE_ENABLE
-#    ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+#    include <math.h>
+
+// Trackball acceleration. Movement up to ACCEL_OFFSET counts/report is left 1:1
+// for precision; faster motion is scaled up linearly (ACCEL_GROWTH per extra
+// count) and capped at ACCEL_LIMIT x. Drag-scroll is unaffected (it already
+// zeroes x/y before this runs) and sniping is skipped to stay precise.
+// Requires MOUSE_EXTENDED_REPORT so scaled deltas aren't clamped to +/-127.
+//
+// Tuning: lower ACCEL_OFFSET to engage sooner, raise ACCEL_GROWTH for a steeper
+// ramp, raise ACCEL_LIMIT for a higher top speed.
+#    ifndef ACCEL_OFFSET
+#        define ACCEL_OFFSET 4.0f
+#    endif
+#    ifndef ACCEL_GROWTH
+#        define ACCEL_GROWTH 0.15f
+#    endif
+#    ifndef ACCEL_LIMIT
+#        define ACCEL_LIMIT 5.0f
+#    endif
+
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    if ((mouse_report.x != 0 || mouse_report.y != 0) && !charybdis_get_pointer_sniping_enabled()) {
+        const float x         = mouse_report.x;
+        const float y         = mouse_report.y;
+        const float magnitude = sqrtf(x * x + y * y);
+        if (magnitude > ACCEL_OFFSET) {
+            float factor = 1.0f + ACCEL_GROWTH * (magnitude - ACCEL_OFFSET);
+            if (factor > ACCEL_LIMIT) {
+                factor = ACCEL_LIMIT;
+            }
+            mouse_report.x = (mouse_xy_report_t)(x * factor);
+            mouse_report.y = (mouse_xy_report_t)(y * factor);
+        }
+    }
+
+#    ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
     if (abs(mouse_report.x) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
         if (auto_pointer_layer_timer == 0) {
             layer_on(LAYER_POINTER);
@@ -228,9 +262,12 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
         }
         auto_pointer_layer_timer = timer_read();
     }
+#    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+
     return mouse_report;
 }
 
+#    ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 void matrix_scan_user(void) {
     if (auto_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(), auto_pointer_layer_timer) >= CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS) {
         auto_pointer_layer_timer = 0;
