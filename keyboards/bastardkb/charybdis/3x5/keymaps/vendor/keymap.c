@@ -227,13 +227,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Tuning: lower ACCEL_OFFSET to engage sooner, raise ACCEL_GROWTH for a steeper
 // ramp, raise ACCEL_LIMIT for a higher top speed.
 #    ifndef ACCEL_OFFSET
-#        define ACCEL_OFFSET 4.0f
+#        define ACCEL_OFFSET 1.5f
 #    endif
 #    ifndef ACCEL_GROWTH
-#        define ACCEL_GROWTH 0.15f
+#        define ACCEL_GROWTH 0.30f
 #    endif
 #    ifndef ACCEL_LIMIT
-#        define ACCEL_LIMIT 5.0f
+#        define ACCEL_LIMIT 10.0f
 #    endif
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
