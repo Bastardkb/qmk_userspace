@@ -230,10 +230,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #        define ACCEL_OFFSET 1.5f
 #    endif
 #    ifndef ACCEL_GROWTH
-#        define ACCEL_GROWTH 0.30f
+#        define ACCEL_GROWTH 0.50f
 #    endif
 #    ifndef ACCEL_LIMIT
-#        define ACCEL_LIMIT 10.0f
+#        define ACCEL_LIMIT 15.0f
 #    endif
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
