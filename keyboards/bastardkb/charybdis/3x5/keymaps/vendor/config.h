@@ -30,10 +30,11 @@
 #endif // COMBO_ENABLE
 
 /* Trackball DPI steps. Default DPI = index*STEP + MINIMUM, and the firmware
- * boots at index 0, so MINIMUM is the effective default pointer speed. Set to
- * 800 (2x the previous 400) for faster mouse movement. */
+ * boots at index 0, so MINIMUM is the effective default pointer speed. Kept at
+ * 400 for precise slow movement; pointer acceleration provides the speed on
+ * fast flicks (see ACCEL_* in keymap.c). */
 #ifdef POINTING_DEVICE_ENABLE
-#    define CHARYBDIS_MINIMUM_DEFAULT_DPI 800
+#    define CHARYBDIS_MINIMUM_DEFAULT_DPI 400
 #    define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 200
 #    define CHARYBDIS_MINIMUM_SNIPING_DPI 200
 #    define CHARYBDIS_SNIPING_DPI_CONFIG_STEP 100
