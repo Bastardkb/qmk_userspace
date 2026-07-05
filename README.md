@@ -8,8 +8,7 @@ Personal QMK Userspace, building the `vendor` keymap for the **Charybdis Nano**
 
 The keymap lives in
 [`keyboards/bastardkb/charybdis/3x5/keymaps/vendor/`](keyboards/bastardkb/charybdis/3x5/keymaps/vendor/).
-Visual references are in [`docs/`](docs/) — an [ASCII view](docs/keymap.md) and a
-rendered diagram:
+A rendered diagram of all layers is in [`docs/`](docs/):
 
 ![Keymap](docs/keymap.svg)
 
