@@ -1,6 +1,6 @@
 # Charybdis Nano — keymap (ASCII)
 
-Generated from `input/argos_config-export.json`. `·` = transparent, `X/Y` = tap X / hold Y (mod or layer). `DrgTg` = trackball drag-scroll toggle. The `F12/A` thumb taps Gui+F12 (holds Alt).
+Generated from `input/argos_config-export.json`. `·` = transparent, `X/Y` = tap X / hold Y (mod or layer). `DrgTg` = trackball drag-scroll toggle. The `F12/A` thumb taps Gui+F12 (holds Alt). `*` = hold to drag-scroll the trackball (tap still types the key).
 
 ## Base
 
@@ -10,7 +10,7 @@ Generated from `input/argos_config-export.json`. `·` = transparent, `X/Y` = tap
 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
 │A/Fn │S/Num│D/Sym│F/Nav│G/Ptr│H/Ptr│J/Nav│K/Sym│L/Num│P/Fn │
 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-│  Z  │ X/G │ C/A │ V/S │  B  │  N  │ M/C │ ,/A │ ./G │  /  │
+│  Z* │ X/G │ C/A │ V/S │  B  │  N  │ M/C │ ,/A │ ./G │  /* │
 └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
      ┌─────┬─────┬─────┐   ┌─────┬─────┐
      │ Ctl │Spc/G│ M1  │   │F12/A│ Sft │

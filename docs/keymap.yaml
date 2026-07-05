@@ -23,7 +23,7 @@ layers:
     - {t: "K", h: "Sym"}
     - {t: "L", h: "Num"}
     - {t: "P", h: "Fn"}
-    - "Z"
+    - {t: "Z", h: "Scrl"}
     - {t: "X", h: "Gui"}
     - {t: "C", h: "Alt"}
     - {t: "V", h: "Sft"}
@@ -32,7 +32,7 @@ layers:
     - {t: "M", h: "Ctl"}
     - {t: ",", h: "Alt"}
     - {t: ".", h: "Gui"}
-    - "/"
+    - {t: "/", h: "Scrl"}
     - "Ctl"
     - {t: "Spc", h: "Gui"}
     - "M1"
