@@ -82,6 +82,11 @@ static uint16_t auto_pointer_layer_timer = 0;
 // The placeholder tap (F12) is remapped to Gui+F12 in process_record_user,
 // since a mod-tap can only carry a basic keycode.
 #define ALT_F12 LALT_T(KC_F12)
+// Hold to drag-scroll the trackball; tap types the letter/symbol. LT(0, ...) is
+// just a tap/hold carrier: layer 0 is base, so its "hold" is a no-op that we
+// override in process_record_user to toggle drag-scroll instead.
+#define Z_SCR LT(0, KC_Z)
+#define SLSH_SCR LT(0, KC_SLSH)
 
 // Bottom-row mod-taps (tap = letter, hold = modifier).
 #define MT_X LGUI_T(KC_X)
@@ -101,11 +106,13 @@ static uint16_t auto_pointer_layer_timer = 0;
  *   A     S     D     F     G          H     J     K     L     P        (home-row layer-taps)
  *   Z     X     C     V     B          N     M     ,     .     /        (bottom-row mod-taps)
  *            Ctl  Gui/Spc Btn1     Alt/Gui+F12  Sft
+ *
+ * Z and / drag-scroll the trackball when held (tap still types z / '/').
  */
 #define LAYOUT_LAYER_BASE                                                             \
        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O, ESC_MED, \
        HR_A,    HR_S,    HR_D,    HR_F,    HR_G,    HR_H,    HR_J,    HR_K,    HR_L,    HR_P, \
-       KC_Z,    MT_X,    MT_C,    MT_V,    KC_B,    KC_N,    MT_M, MT_COMM,  MT_DOT, KC_SLSH, \
+      Z_SCR,    MT_X,    MT_C,    MT_V,    KC_B,    KC_N,    MT_M, MT_COMM,  MT_DOT, SLSH_SCR, \
                      OSM(MOD_LCTL), LGUI_T(KC_SPC), KC_BTN1, ALT_F12, OSM(MOD_LSFT)
 
 /**
@@ -211,6 +218,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             break;
+        case Z_SCR:
+        case SLSH_SCR:
+            if (record->tap.count == 0) {  // held -> drag-scroll
+#ifdef POINTING_DEVICE_ENABLE
+                charybdis_set_pointer_dragscroll_enabled(record->event.pressed);
+#endif
+                return false;
+            }
+            return true;  // tapped -> z / '/'
     }
     return true;
 }
