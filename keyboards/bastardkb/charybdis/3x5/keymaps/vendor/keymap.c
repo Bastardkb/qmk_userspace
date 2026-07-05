@@ -133,8 +133,8 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_LAYER_NAVIGATION                                                               \
     _______,  KC_ESC, LCTL(LGUI(KC_SPC)), _______, _______, _______, _______,   KC_UP, KC_BSPC, _______, \
      KC_TAB, KC_LCTL, KC_LALT, KC_PSCR, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT,  KC_ENT, \
-    _______, _______, _______, _______, _______, _______, KC_PGUP, KC_PGDN, _______, QK_LLCK, \
-                      SNIPING, DRG_TOG, KC_BTN2, TO(LAYER_BASE), _______
+    DRG_TOG, _______, _______, _______, _______, _______, KC_PGUP, KC_PGDN, _______, QK_LLCK, \
+                      SNIPING, _______, KC_BTN2, TO(LAYER_BASE), _______
 
 /**
  * \brief Media / RGB layer (left-hand cluster, for the right-hand trackball).
@@ -246,10 +246,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #        define ACCEL_OFFSET 1.5f
 #    endif
 #    ifndef ACCEL_GROWTH
-#        define ACCEL_GROWTH 0.50f
+#        define ACCEL_GROWTH 2.50f
 #    endif
 #    ifndef ACCEL_LIMIT
-#        define ACCEL_LIMIT 15.0f
+#        define ACCEL_LIMIT 30.0f
 #    endif
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
