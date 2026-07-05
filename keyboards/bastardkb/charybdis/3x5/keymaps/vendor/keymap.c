@@ -134,7 +134,7 @@ static uint16_t auto_pointer_layer_timer = 0;
     _______,  KC_ESC, LCTL(LGUI(KC_SPC)), _______, _______, _______, _______,   KC_UP, KC_BSPC, _______, \
      KC_TAB, KC_LCTL, KC_LALT, KC_PSCR, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT,  KC_ENT, \
     DRG_TOG, _______, _______, _______, _______, _______, KC_PGUP, KC_PGDN, _______, QK_LLCK, \
-                      SNIPING, _______, KC_BTN2, TO(LAYER_BASE), _______
+                      _______, SNIPING, KC_BTN2, TO(LAYER_BASE), _______
 
 /**
  * \brief Media / RGB layer (left-hand cluster, for the right-hand trackball).
