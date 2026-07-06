@@ -64,17 +64,17 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
-// Home-row layer-taps (tap = letter, hold = layer). A/P are plain letters; the
-// index keys G/H are drag-scroll carriers (below).
+// Home-row layer-taps (tap = letter, hold = layer). A/P hold into Media and the
+// index keys G/H drag-scroll (both defined below).
 #define HR_S LT(LAYER_NUMERAL,    KC_S)
 #define HR_D LT(LAYER_SYMBOLS,    KC_D)
 #define HR_F LT(LAYER_NAVIGATION, KC_F)
 #define HR_J LT(LAYER_NAVIGATION, KC_J)
 #define HR_K LT(LAYER_SYMBOLS,    KC_K)
 #define HR_L LT(LAYER_NUMERAL,    KC_L)
-// Pinky-column layer holds: Q and Esc reach Media; z and / reach the Pointer layer.
-#define Q_MED    LT(LAYER_MEDIA,   KC_Q)
-#define ESC_MED  LT(LAYER_MEDIA,   KC_ESC)
+// Pinky-column layer holds: A and P reach Media; z and / reach the Pointer layer.
+#define A_MED    LT(LAYER_MEDIA,   KC_A)
+#define P_MED    LT(LAYER_MEDIA,   KC_P)
 #define Z_PTR    LT(LAYER_POINTER, KC_Z)
 #define SLSH_PTR LT(LAYER_POINTER, KC_SLSH)
 // Right inner thumb: hold = Left Alt, tap = Gui+F12.
@@ -106,12 +106,12 @@ static uint16_t auto_pointer_layer_timer = 0;
  *   Z     X     C     V     B          N     M     ,     .     /        (bottom-row mod-taps)
  *            Ctl  Gui/Spc Btn1     Alt/Gui+F12  Sft
  *
- * Pinky-column holds: Q / Esc -> Media; z / -> Pointer. Home index G / H
- * drag-scroll the trackball. A / P are plain letters. (Taps unchanged.)
+ * Pinky-column holds: A / P -> Media; z / -> Pointer. Home index G / H
+ * drag-scroll the trackball. (Taps unchanged.)
  */
 #define LAYOUT_LAYER_BASE                                                             \
-      Q_MED,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O, ESC_MED, \
-       KC_A,    HR_S,    HR_D,    HR_F,   G_SCR,   H_SCR,    HR_J,    HR_K,    HR_L,    KC_P, \
+       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,  KC_ESC, \
+      A_MED,    HR_S,    HR_D,    HR_F,   G_SCR,   H_SCR,    HR_J,    HR_K,    HR_L,   P_MED, \
       Z_PTR,    MT_X,    MT_C,    MT_V,    KC_B,    KC_N,    MT_M, MT_COMM,  MT_DOT, SLSH_PTR, \
                      OSM(MOD_LCTL), LGUI_T(KC_SPC), KC_BTN1, ALT_F12, OSM(MOD_LSFT)
 
@@ -188,7 +188,7 @@ enum combos {
 
 const uint16_t PROGMEM combo_cv[] = {MT_C, MT_V, COMBO_END};
 const uint16_t PROGMEM combo_xc[] = {MT_X, MT_C, COMBO_END};
-const uint16_t PROGMEM combo_qw[] = {Q_MED, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_qw[] = {KC_Q, KC_W, COMBO_END};
 
 combo_t key_combos[] = {
     [COMBO_CV_ENT]  = COMBO(combo_cv, KC_ENT),

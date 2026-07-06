@@ -3,7 +3,7 @@ layout:
   layout_name: LAYOUT
 layers:
   Base:
-    - {t: "Q", h: "Media"}
+    - "Q"
     - "W"
     - "E"
     - "R"
@@ -12,8 +12,8 @@ layers:
     - "U"
     - "I"
     - "O"
-    - {t: "Esc", h: "Media"}
-    - "A"
+    - "Esc"
+    - {t: "A", h: "Media"}
     - {t: "S", h: "Num"}
     - {t: "D", h: "Sym"}
     - {t: "F", h: "Nav"}
@@ -22,7 +22,7 @@ layers:
     - {t: "J", h: "Nav"}
     - {t: "K", h: "Sym"}
     - {t: "L", h: "Num"}
-    - "P"
+    - {t: "P", h: "Media"}
     - {t: "Z", h: "Ptr"}
     - {t: "X", h: "Gui"}
     - {t: "C", h: "Alt"}
