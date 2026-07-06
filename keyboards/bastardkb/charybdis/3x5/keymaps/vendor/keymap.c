@@ -34,7 +34,6 @@
 
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
-    LAYER_FUNCTION,
     LAYER_NAVIGATION,
     LAYER_MEDIA,
     LAYER_POINTER,
@@ -65,30 +64,28 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
-// Home-row layer-taps (tap = letter, hold = layer). The pinkies (A, P) are
-// handled below as drag-scroll carriers instead.
+// Home-row layer-taps (tap = letter, hold = layer). A/P are plain letters; the
+// index keys G/H are drag-scroll carriers (below).
 #define HR_S LT(LAYER_NUMERAL,    KC_S)
 #define HR_D LT(LAYER_SYMBOLS,    KC_D)
 #define HR_F LT(LAYER_NAVIGATION, KC_F)
-#define HR_G LT(LAYER_POINTER,    KC_G)
-#define HR_H LT(LAYER_POINTER,    KC_H)
 #define HR_J LT(LAYER_NAVIGATION, KC_J)
 #define HR_K LT(LAYER_SYMBOLS,    KC_K)
 #define HR_L LT(LAYER_NUMERAL,    KC_L)
-// Pinky-column layer holds: Q and Esc reach Media; z and / reach Function.
-#define Q_MED    LT(LAYER_MEDIA,    KC_Q)
-#define ESC_MED  LT(LAYER_MEDIA,    KC_ESC)
-#define Z_FUN    LT(LAYER_FUNCTION, KC_Z)
-#define SLSH_FUN LT(LAYER_FUNCTION, KC_SLSH)
+// Pinky-column layer holds: Q and Esc reach Media; z and / reach the Pointer layer.
+#define Q_MED    LT(LAYER_MEDIA,   KC_Q)
+#define ESC_MED  LT(LAYER_MEDIA,   KC_ESC)
+#define Z_PTR    LT(LAYER_POINTER, KC_Z)
+#define SLSH_PTR LT(LAYER_POINTER, KC_SLSH)
 // Right inner thumb: hold = Left Alt, tap = Gui+F12.
 // The placeholder tap (F12) is remapped to Gui+F12 in process_record_user,
 // since a mod-tap can only carry a basic keycode.
 #define ALT_F12 LALT_T(KC_F12)
-// Hold the home-row pinkies (A, P) to drag-scroll the trackball; tap types the
+// Hold the home-row index keys (G, H) to drag-scroll the trackball; tap types the
 // letter. LT(0, ...) is just a tap/hold carrier: layer 0 is base, so its "hold"
 // is a no-op that we override in process_record_user to toggle drag-scroll.
-#define A_SCR LT(0, KC_A)
-#define P_SCR LT(0, KC_P)
+#define G_SCR LT(0, KC_G)
+#define H_SCR LT(0, KC_H)
 
 // Bottom-row mod-taps (tap = letter, hold = modifier).
 #define MT_X LGUI_T(KC_X)
@@ -109,23 +106,14 @@ static uint16_t auto_pointer_layer_timer = 0;
  *   Z     X     C     V     B          N     M     ,     .     /        (bottom-row mod-taps)
  *            Ctl  Gui/Spc Btn1     Alt/Gui+F12  Sft
  *
- * Pinky-column holds: Q / Esc -> Media; A / P -> drag-scroll; z / -> Function.
- * (Taps are unchanged: q a z / etc.)
+ * Pinky-column holds: Q / Esc -> Media; z / -> Pointer. Home index G / H
+ * drag-scroll the trackball. A / P are plain letters. (Taps unchanged.)
  */
 #define LAYOUT_LAYER_BASE                                                             \
       Q_MED,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O, ESC_MED, \
-      A_SCR,    HR_S,    HR_D,    HR_F,    HR_G,    HR_H,    HR_J,    HR_K,    HR_L,   P_SCR, \
-      Z_FUN,    MT_X,    MT_C,    MT_V,    KC_B,    KC_N,    MT_M, MT_COMM,  MT_DOT, SLSH_FUN, \
+       KC_A,    HR_S,    HR_D,    HR_F,   G_SCR,   H_SCR,    HR_J,    HR_K,    HR_L,    KC_P, \
+      Z_PTR,    MT_X,    MT_C,    MT_V,    KC_B,    KC_N,    MT_M, MT_COMM,  MT_DOT, SLSH_PTR, \
                      OSM(MOD_LCTL), LGUI_T(KC_SPC), KC_BTN1, ALT_F12, OSM(MOD_LSFT)
-
-/**
- * \brief Function layer (mostly unused for now — extend as needed).
- */
-#define LAYOUT_LAYER_FUNCTION                                                                 \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, QK_LLCK, \
-                      _______, RM_PREV, _______, TO(LAYER_BASE), _______
 
 /**
  * \brief Navigation layer.
@@ -181,7 +169,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE]       = LAYOUT_wrapper(LAYOUT_LAYER_BASE),
-  [LAYER_FUNCTION]   = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
   [LAYER_MEDIA]      = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
   [LAYER_POINTER]    = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
@@ -221,15 +208,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             break;
-        case A_SCR:
-        case P_SCR:
+        case G_SCR:
+        case H_SCR:
             if (record->tap.count == 0) {  // held -> drag-scroll
 #ifdef POINTING_DEVICE_ENABLE
                 charybdis_set_pointer_dragscroll_enabled(record->event.pressed);
 #endif
                 return false;
             }
-            return true;  // tapped -> a / p
+            return true;  // tapped -> g / h
     }
     return true;
 }
