@@ -119,12 +119,12 @@ static uint16_t auto_pointer_layer_timer = 0;
  * \brief Navigation layer.
  *
  * Arrows form an inverted-T on the right home cluster; editing/clipboard extras
- * around them.  Left-hand thumbs expose sniping / drag-scroll / right-click.
+ * around them.  G/H toggle drag-scroll; thumbs expose sniping / right-click.
  */
 #define LAYOUT_LAYER_NAVIGATION                                                               \
     _______,  KC_ESC, LCTL(LGUI(KC_SPC)), _______, _______, _______, _______,   KC_UP, KC_BSPC, _______, \
-     KC_TAB, KC_LCTL, KC_LALT, KC_PSCR, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT,  KC_ENT, \
-    DRG_TOG, _______, _______, _______, _______, _______, KC_PGUP, KC_PGDN, _______, QK_LLCK, \
+     KC_TAB, KC_LCTL, KC_LALT, KC_PSCR, DRG_TOG, DRG_TOG, KC_LEFT, KC_DOWN, KC_RGHT,  KC_ENT, \
+    _______, _______, _______, _______, _______, _______, KC_PGUP, KC_PGDN, _______, QK_LLCK, \
                       _______, SNIPING, KC_BTN2, TO(LAYER_BASE), _______
 
 /**
