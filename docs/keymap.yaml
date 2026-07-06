@@ -3,7 +3,7 @@ layout:
   layout_name: LAYOUT
 layers:
   Base:
-    - "Q"
+    - {t: "Q", h: "Media"}
     - "W"
     - "E"
     - "R"
@@ -13,7 +13,7 @@ layers:
     - "I"
     - "O"
     - {t: "Esc", h: "Media"}
-    - {t: "A", h: "Fn"}
+    - {t: "A", h: "Scrl"}
     - {t: "S", h: "Num"}
     - {t: "D", h: "Sym"}
     - {t: "F", h: "Nav"}
@@ -22,8 +22,8 @@ layers:
     - {t: "J", h: "Nav"}
     - {t: "K", h: "Sym"}
     - {t: "L", h: "Num"}
-    - {t: "P", h: "Fn"}
-    - {t: "Z", h: "Scrl"}
+    - {t: "P", h: "Scrl"}
+    - {t: "Z", h: "Fn"}
     - {t: "X", h: "Gui"}
     - {t: "C", h: "Alt"}
     - {t: "V", h: "Sft"}
@@ -32,7 +32,7 @@ layers:
     - {t: "M", h: "Ctl"}
     - {t: ",", h: "Alt"}
     - {t: ".", h: "Gui"}
-    - {t: "/", h: "Scrl"}
+    - {t: "/", h: "Fn"}
     - "Ctl"
     - {t: "Spc", h: "Gui"}
     - "M1"
@@ -151,7 +151,7 @@ layers:
     - "Hue-"
     - "Mode-"
     - "Hue+"
-    - ""
+    - "RGB Tog"
     - ""
     - ""
     - ""

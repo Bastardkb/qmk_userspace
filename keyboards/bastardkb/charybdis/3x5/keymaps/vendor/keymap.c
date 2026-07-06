@@ -65,8 +65,8 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
-// Home-row layer-taps (tap = letter, hold = layer).
-#define HR_A LT(LAYER_FUNCTION,   KC_A)
+// Home-row layer-taps (tap = letter, hold = layer). The pinkies (A, P) are
+// handled below as drag-scroll carriers instead.
 #define HR_S LT(LAYER_NUMERAL,    KC_S)
 #define HR_D LT(LAYER_SYMBOLS,    KC_D)
 #define HR_F LT(LAYER_NAVIGATION, KC_F)
@@ -75,18 +75,20 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define HR_J LT(LAYER_NAVIGATION, KC_J)
 #define HR_K LT(LAYER_SYMBOLS,    KC_K)
 #define HR_L LT(LAYER_NUMERAL,    KC_L)
-#define HR_P LT(LAYER_FUNCTION,   KC_P)
-// Right pinky top: tap = Esc, hold = media layer.
-#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
+// Pinky-column layer holds: Q and Esc reach Media; z and / reach Function.
+#define Q_MED    LT(LAYER_MEDIA,    KC_Q)
+#define ESC_MED  LT(LAYER_MEDIA,    KC_ESC)
+#define Z_FUN    LT(LAYER_FUNCTION, KC_Z)
+#define SLSH_FUN LT(LAYER_FUNCTION, KC_SLSH)
 // Right inner thumb: hold = Left Alt, tap = Gui+F12.
 // The placeholder tap (F12) is remapped to Gui+F12 in process_record_user,
 // since a mod-tap can only carry a basic keycode.
 #define ALT_F12 LALT_T(KC_F12)
-// Hold to drag-scroll the trackball; tap types the letter/symbol. LT(0, ...) is
-// just a tap/hold carrier: layer 0 is base, so its "hold" is a no-op that we
-// override in process_record_user to toggle drag-scroll instead.
-#define Z_SCR LT(0, KC_Z)
-#define SLSH_SCR LT(0, KC_SLSH)
+// Hold the home-row pinkies (A, P) to drag-scroll the trackball; tap types the
+// letter. LT(0, ...) is just a tap/hold carrier: layer 0 is base, so its "hold"
+// is a no-op that we override in process_record_user to toggle drag-scroll.
+#define A_SCR LT(0, KC_A)
+#define P_SCR LT(0, KC_P)
 
 // Bottom-row mod-taps (tap = letter, hold = modifier).
 #define MT_X LGUI_T(KC_X)
@@ -107,12 +109,13 @@ static uint16_t auto_pointer_layer_timer = 0;
  *   Z     X     C     V     B          N     M     ,     .     /        (bottom-row mod-taps)
  *            Ctl  Gui/Spc Btn1     Alt/Gui+F12  Sft
  *
- * Z and / drag-scroll the trackball when held (tap still types z / '/').
+ * Pinky-column holds: Q / Esc -> Media; A / P -> drag-scroll; z / -> Function.
+ * (Taps are unchanged: q a z / etc.)
  */
 #define LAYOUT_LAYER_BASE                                                             \
-       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O, ESC_MED, \
-       HR_A,    HR_S,    HR_D,    HR_F,    HR_G,    HR_H,    HR_J,    HR_K,    HR_L,    HR_P, \
-      Z_SCR,    MT_X,    MT_C,    MT_V,    KC_B,    KC_N,    MT_M, MT_COMM,  MT_DOT, SLSH_SCR, \
+      Q_MED,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O, ESC_MED, \
+      A_SCR,    HR_S,    HR_D,    HR_F,    HR_G,    HR_H,    HR_J,    HR_K,    HR_L,   P_SCR, \
+      Z_FUN,    MT_X,    MT_C,    MT_V,    KC_B,    KC_N,    MT_M, MT_COMM,  MT_DOT, SLSH_FUN, \
                      OSM(MOD_LCTL), LGUI_T(KC_SPC), KC_BTN1, ALT_F12, OSM(MOD_LSFT)
 
 /**
@@ -140,7 +143,7 @@ static uint16_t auto_pointer_layer_timer = 0;
  * \brief Media / RGB layer (left-hand cluster, for the right-hand trackball).
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    _______, RM_HUED, RM_PREV, RM_HUEU, _______, _______, _______, _______, _______, _______, \
+    _______, RM_HUED, RM_PREV, RM_HUEU, RM_TOGG, _______, _______, _______, _______, _______, \
     _______, KC_MPLY, KC_MPRV, KC_MSTP, _______, _______, _______, _______, _______, _______, \
     XXXXXXX, XXXXXXX, KC_MUTE, KC_MNXT, _______, _______, _______, _______, _______, _______, \
                       _______, _______, _______, _______, _______
@@ -218,15 +221,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             break;
-        case Z_SCR:
-        case SLSH_SCR:
+        case A_SCR:
+        case P_SCR:
             if (record->tap.count == 0) {  // held -> drag-scroll
 #ifdef POINTING_DEVICE_ENABLE
                 charybdis_set_pointer_dragscroll_enabled(record->event.pressed);
 #endif
                 return false;
             }
-            return true;  // tapped -> z / '/'
+            return true;  // tapped -> a / p
     }
     return true;
 }
