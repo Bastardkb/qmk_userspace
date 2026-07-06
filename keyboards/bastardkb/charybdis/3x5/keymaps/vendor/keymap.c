@@ -188,7 +188,7 @@ enum combos {
 
 const uint16_t PROGMEM combo_cv[] = {MT_C, MT_V, COMBO_END};
 const uint16_t PROGMEM combo_xc[] = {MT_X, MT_C, COMBO_END};
-const uint16_t PROGMEM combo_qw[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_qw[] = {Q_MED, KC_W, COMBO_END};
 
 combo_t key_combos[] = {
     [COMBO_CV_ENT]  = COMBO(combo_cv, KC_ENT),
