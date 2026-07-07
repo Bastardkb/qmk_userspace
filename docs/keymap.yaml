@@ -41,7 +41,7 @@ layers:
   Nav:
     - ""
     - "Esc"
-    - "Ctl+Gui-Spc"
+    - "emoji"
     - ""
     - ""
     - ""
@@ -87,7 +87,7 @@ layers:
     - ""
     - "Tab"
     - "*"
-    - "Sft-;"
+    - ":"
     - "-"
     - ""
     - "0"
@@ -222,3 +222,11 @@ combos:
   - {p: [22, 23], k: "Enter", l: [Base]}
   - {p: [21, 22], k: "Tab", l: [Base]}
   - {p: [0, 1], k: "Bspc", l: [Base]}
+
+draw_config:
+  dark_mode: auto
+  footer_text: "Charybdis Nano (3x5) — vendor keymap"
+  svg_extra_style: |
+    text.label { font-size: 21px !important; fill: #8957e5 !important; letter-spacing: 0.5px; }
+    text.footer { fill: #8b949e !important; }
+    rect.combo { fill: #ddd6fe; }
