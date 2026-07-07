@@ -86,6 +86,9 @@ static uint16_t auto_pointer_layer_timer = 0;
 // is a no-op that we override in process_record_user to toggle drag-scroll.
 #define G_SCR LT(0, KC_G)
 #define H_SCR LT(0, KC_H)
+// Hold B to "zoom": enable drag-scroll AND hold Ctrl, so trackball motion sends
+// Ctrl+wheel (zoom in most apps). Tap types b. Handled in process_record_user.
+#define B_ZOOM LT(0, KC_B)
 
 // Bottom-row mod-taps (tap = letter, hold = modifier).
 #define MT_X LGUI_T(KC_X)
@@ -112,7 +115,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_LAYER_BASE                                                             \
        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,  KC_ESC, \
       A_MED,    HR_S,    HR_D,    HR_F,   G_SCR,   H_SCR,    HR_J,    HR_K,    HR_L,   P_MED, \
-      Z_PTR,    MT_X,    MT_C,    MT_V,    KC_B,    KC_N,    MT_M, MT_COMM,  MT_DOT, SLSH_PTR, \
+      Z_PTR,    MT_X,    MT_C,    MT_V,  B_ZOOM,    KC_N,    MT_M, MT_COMM,  MT_DOT, SLSH_PTR, \
                      OSM(MOD_LCTL), LGUI_T(KC_SPC), KC_BTN1, ALT_F12, OSM(MOD_LSFT)
 
 /**
@@ -217,6 +220,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             return true;  // tapped -> g / h
+        case B_ZOOM:
+            if (record->tap.count == 0) {  // held -> zoom: Ctrl + drag-scroll
+#ifdef POINTING_DEVICE_ENABLE
+                charybdis_set_pointer_dragscroll_enabled(record->event.pressed);
+#endif
+                if (record->event.pressed) {
+                    register_mods(MOD_BIT(KC_LCTL));
+                } else {
+                    unregister_mods(MOD_BIT(KC_LCTL));
+                }
+                return false;
+            }
+            return true;  // tapped -> b
     }
     return true;
 }
