@@ -27,7 +27,7 @@ layers:
     - {t: "X", h: "Gui"}
     - {t: "C", h: "Alt"}
     - {t: "V", h: "Sft"}
-    - "B"
+    - {t: "B", h: "Zoom"}
     - "N"
     - {t: "M", h: "Ctl"}
     - {t: ",", h: "Alt"}
