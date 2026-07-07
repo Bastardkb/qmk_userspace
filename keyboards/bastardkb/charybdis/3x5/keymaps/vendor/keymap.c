@@ -65,10 +65,9 @@ static uint16_t auto_pointer_layer_timer = 0;
 #endif // !POINTING_DEVICE_ENABLE
 
 // Custom keycodes that emit Linux Compose-key sequences (see process_record_user).
-// KC_COMPOSE must be the key set as Compose in the desktop. Here it's the
-// "Launch Media Player" media key (XF86AudioMedia) = QMK KC_MEDIA_SELECT, which
-// is a consumer keycode but sends fine via tap_code (it's < 0x100).
-#define KC_COMPOSE KC_MEDIA_SELECT
+// KC_COMPOSE must be the key set as Compose in the desktop. Here Right Alt is the
+// Compose key (xkb "compose:ralt"), so nothing else in this keymap may hold RAlt.
+#define KC_COMPOSE KC_RALT
 enum custom_keycodes {
     EURO = SAFE_RANGE,  // Compose e =  -> €
     ELLIPSIS,           // Compose . .  -> …
@@ -107,7 +106,9 @@ enum custom_keycodes {
 // Right-hand mods use the RIGHT-hand modifiers for clean cross-hand chording
 // (the export used left-hand mods here; switched to R* variants).
 #define MT_M RCTL_T(KC_M)
-#define MT_COMM RALT_T(KC_COMM)
+// Comma holds Left Alt (not Right Alt): Right Alt is the Compose key, so it must
+// not be used as a modifier anywhere in the keymap.
+#define MT_COMM LALT_T(KC_COMM)
 #define MT_DOT RGUI_T(KC_DOT)
 
 // clang-format off
