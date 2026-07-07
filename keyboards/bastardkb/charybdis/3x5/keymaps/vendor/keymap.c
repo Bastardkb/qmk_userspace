@@ -65,8 +65,10 @@ static uint16_t auto_pointer_layer_timer = 0;
 #endif // !POINTING_DEVICE_ENABLE
 
 // Custom keycodes that emit Linux Compose-key sequences (see process_record_user).
-// Set your desktop's Compose key to Menu to match KC_COMPOSE.
-#define KC_COMPOSE KC_APP  // Menu / Application key
+// KC_COMPOSE must be the key set as Compose in the desktop. Here it's the
+// "Launch Media Player" media key (XF86AudioMedia) = QMK KC_MEDIA_SELECT, which
+// is a consumer keycode but sends fine via tap_code (it's < 0x100).
+#define KC_COMPOSE KC_MEDIA_SELECT
 enum custom_keycodes {
     EURO = SAFE_RANGE,  // Compose e =  -> €
     ELLIPSIS,           // Compose . .  -> …
@@ -133,7 +135,7 @@ enum custom_keycodes {
  * around them.  G/H toggle drag-scroll; thumbs expose sniping / right-click.
  */
 #define LAYOUT_LAYER_NAVIGATION                                                               \
-    _______,  KC_ESC, LCTL(LGUI(KC_SPC)), _______, _______, _______, _______,   KC_UP, KC_BSPC, _______, \
+    _______,  KC_ESC, LCTL(LGUI(KC_SPC)), KC_COMPOSE, _______, _______, _______,   KC_UP, KC_BSPC, _______, \
      KC_TAB, KC_LCTL, KC_LALT, KC_PSCR, DRG_TOG, DRG_TOG, KC_LEFT, KC_DOWN, KC_RGHT,  KC_ENT, \
     _______, _______, _______, _______, _______, _______, KC_PGUP, KC_PGDN, _______, QK_LLCK, \
                       _______, SNIPING, KC_BTN2, TO(LAYER_BASE), _______
