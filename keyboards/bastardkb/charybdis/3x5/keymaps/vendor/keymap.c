@@ -64,6 +64,14 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
+// Custom keycodes that emit Linux Compose-key sequences (see process_record_user).
+// Set your desktop's Compose key to Menu to match KC_COMPOSE.
+#define KC_COMPOSE KC_APP  // Menu / Application key
+enum custom_keycodes {
+    EURO = SAFE_RANGE,  // Compose e =  -> €
+    ELLIPSIS,           // Compose . .  -> …
+};
+
 // Home-row layer-taps (tap = letter, hold = layer). A/P hold into Media and the
 // index keys G/H drag-scroll (both defined below).
 #define HR_S LT(LAYER_NUMERAL,    KC_S)
@@ -154,7 +162,7 @@ static uint16_t auto_pointer_layer_timer = 0;
  * Numpad-style digits on the right hand; assorted symbols on the left.
  */
 #define LAYOUT_LAYER_NUMERAL                                                                  \
-    _______,  KC_DLR, LALT(KC_2), KC_PLUS, _______, _______,    KC_7,    KC_8,    KC_9, _______, \
+    _______,  KC_DLR,    EURO, KC_PLUS, _______, _______,    KC_7,    KC_8,    KC_9, _______, \
      KC_TAB, KC_ASTR, KC_COLN, KC_MINS, _______,    KC_0,    KC_4,    KC_5,    KC_6, KC_PENT, \
     _______, _______, KC_PERC,  KC_EQL, _______, _______,    KC_1,    KC_2,    KC_3, QK_LLCK, \
                       _______, _______, _______, TO(LAYER_BASE), _______
@@ -164,7 +172,7 @@ static uint16_t auto_pointer_layer_timer = 0;
  */
 #define LAYOUT_LAYER_SYMBOLS                                                                  \
     _______, KC_CIRC, KC_AMPR, KC_TILD, _______, _______, KC_LBRC, KC_RBRC, KC_EXLM, _______, \
-    KC_SLSH,  KC_GRV, KC_DQUO, KC_QUOT, _______, _______, KC_LPRN, KC_RPRN, KC_QUES, _______, \
+    KC_SLSH,  KC_GRV, KC_DQUO, KC_QUOT, _______, _______, KC_LPRN, KC_RPRN, KC_QUES, ELLIPSIS, \
     _______, KC_BSLS, KC_UNDS, KC_PIPE, _______, _______, KC_HASH,   KC_AT, KC_SCLN, QK_LLCK, \
                       _______,  KC_SPC, _______, TO(LAYER_BASE), _______
 
@@ -211,6 +219,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             break;
+        case EURO:  // Compose e =
+            if (record->event.pressed) {
+                tap_code(KC_COMPOSE);
+                tap_code(KC_E);
+                tap_code(KC_EQL);
+            }
+            return false;
+        case ELLIPSIS:  // Compose . .
+            if (record->event.pressed) {
+                tap_code(KC_COMPOSE);
+                tap_code(KC_DOT);
+                tap_code(KC_DOT);
+            }
+            return false;
         case G_SCR:
         case H_SCR:
             if (record->tap.count == 0) {  // held -> drag-scroll
