@@ -64,6 +64,11 @@
 #    define RGB_MATRIX_DEFAULT_VAL 40
 #    undef RGB_MATRIX_DEFAULT_SPD
 #    define RGB_MATRIX_DEFAULT_SPD 40
+// Process every LED each frame (default only does ~1/5). Without this, when the
+// layer-indicator blue clears on return to base, the animation reclaims the LEDs
+// a chunk at a time, producing a visible per-key "catch-up" wipe.
+#    undef RGB_MATRIX_LED_PROCESS_LIMIT
+#    define RGB_MATRIX_LED_PROCESS_LIMIT RGB_MATRIX_LED_COUNT
 #endif // RGB_MATRIX_ENABLE
 
 #ifndef __arm__

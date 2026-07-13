@@ -326,29 +326,33 @@ void matrix_scan_user(void) {
 }
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#    ifdef CHARYBDIS_AUTO_SNIPING_ON_LAYER
+#endif // POINTING_DEVICE_ENABLE
+
+// Per-layer RGB indicator + auto-sniping, both driven off layer changes.
+//
+// RGB: on any non-base layer, switch the whole matrix to a solid blue (at the
+// currently configured brightness). On return to base, reload the user's
+// configured animation straight from EEPROM, so whatever they set on the
+// keyboard (mode, hue, brightness, speed) comes back exactly. This actually
+// changes the RGB *mode* rather than overlaying blue every frame, so there is
+// no per-frame fighting and nothing to "clear" — the mode simply flips.
 layer_state_t layer_state_set_user(layer_state_t state) {
+#if defined(POINTING_DEVICE_ENABLE) && defined(CHARYBDIS_AUTO_SNIPING_ON_LAYER)
     charybdis_set_pointer_sniping_enabled(layer_state_cmp(state, CHARYBDIS_AUTO_SNIPING_ON_LAYER));
+#endif
+#ifdef RGB_MATRIX_ENABLE
+    static bool rgb_overridden = false;
+    if (get_highest_layer(state) > LAYER_BASE) {
+        if (!rgb_overridden) {  // entering the override: remember to restore later
+            rgb_overridden = true;
+            HSV blue       = {HSV_BLUE};
+            rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+            rgb_matrix_sethsv_noeeprom(blue.h, blue.s, rgb_matrix_get_val());
+        }
+    } else if (rgb_overridden) {  // back to base: restore the configured animation
+        rgb_overridden = false;
+        rgb_matrix_reload_from_eeprom();
+    }
+#endif
     return state;
 }
-#    endif // CHARYBDIS_AUTO_SNIPING_ON_LAYER
-#endif     // POINTING_DEVICE_ENABLE
-
-#ifdef RGB_MATRIX_ENABLE
-// Forward-declare this helper function since it is defined in
-// rgb_matrix.c.
-void rgb_matrix_update_pwm_buffers(void);
-
-// Layer indicator: on any layer other than base, paint every LED solid blue.
-// On the base layer we override nothing, so the configured animation plays as
-// usual. Boot/bootloader stays red — that is set by shutdown_kb() in the board
-// core and this runs only while the firmware is live, so it never interferes.
-bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-    if (get_highest_layer(layer_state) > LAYER_BASE) {
-        for (uint8_t i = led_min; i < led_max; i++) {
-            rgb_matrix_set_color(i, RGB_BLUE);
-        }
-    }
-    return false;
-}
-#endif
