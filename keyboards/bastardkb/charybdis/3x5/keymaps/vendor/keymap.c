@@ -338,4 +338,17 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 // Forward-declare this helper function since it is defined in
 // rgb_matrix.c.
 void rgb_matrix_update_pwm_buffers(void);
+
+// Layer indicator: on any layer other than base, paint every LED solid blue.
+// On the base layer we override nothing, so the configured animation plays as
+// usual. Boot/bootloader stays red — that is set by shutdown_kb() in the board
+// core and this runs only while the firmware is live, so it never interferes.
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if (get_highest_layer(layer_state) > LAYER_BASE) {
+        for (uint8_t i = led_min; i < led_max; i++) {
+            rgb_matrix_set_color(i, RGB_BLUE);
+        }
+    }
+    return false;
+}
 #endif

@@ -47,6 +47,12 @@
 #    define MOUSE_EXTENDED_REPORT
 #endif // POINTING_DEVICE_ENABLE
 
+/* Split sync: transmit the active layer state to the peripheral half. Without
+ * this, layer_state on the non-USB half is always 0, so the per-layer blue RGB
+ * indicator (rgb_matrix_indicators_advanced_user in keymap.c) only lights the
+ * master half. */
+#define SPLIT_LAYER_STATE_ENABLE
+
 /* RGB matrix defaults (from Argos export). The board already defines these, so
  * undef first to avoid -Werror redefinition warnings. */
 #ifdef RGB_MATRIX_ENABLE
