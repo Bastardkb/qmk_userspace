@@ -1,0 +1,6 @@
+{
+    "modules": [
+        "bastardkb/argos",
+        "bastardkb/lcd"
+    ]
+}
