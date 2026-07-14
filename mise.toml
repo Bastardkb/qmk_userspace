@@ -1,0 +1,26 @@
+[tasks.build]
+description = "Build the firmware"
+usage = '''
+arg "<model>" help="For which dilemma variant compile code" {
+  choices "3x5_3_procyon" "4x6_4_procyon"
+}
+flag "--no-lcd" help="Don't build with lcd module"
+'''
+dir = "{{config_root}}"
+run = '''
+keymap_dir="keyboards/bastardkb/dilemma/${usage_model?}/keymaps/tokariew"
+variant="def.json"
+
+if [ "${usage_no_lcd:-false}" = "true" ]; then
+    variant="no_lcd.json"
+fi
+
+if [ -f "$keymap_dir/$variant" ]; then
+    cp "$keymap_dir/$variant" "$keymap_dir/keymap.json"
+elif [ "${usage_no_lcd:-false}" = "true" ]; then
+    echo "--no-lcd is not available for ${usage_model?}: missing $keymap_dir/$variant" >&2
+    exit 1
+fi
+
+qmk clean -a && qmk compile -c -kb "bastardkb/dilemma/${usage_model?}" -km tokariew -j"$(nproc)"
+'''
