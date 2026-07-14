@@ -1,0 +1,3 @@
+[submodule "modules/bastardkb"]
+	path = modules/bastardkb
+	url = https://github.com/Bastardkb/qmk_modules.git
