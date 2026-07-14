@@ -151,6 +151,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 #ifdef POINTING_DEVICE_ENABLE
+#    define DILEMMA_TOKARIEW_DEFAULT_DPI 3400
+
+void eeconfig_init_user(void) {
+    for (uint8_t i = 0; i < 16 && dilemma_get_pointer_default_dpi() != DILEMMA_TOKARIEW_DEFAULT_DPI; i++) {
+        dilemma_cycle_pointer_default_dpi(dilemma_get_pointer_default_dpi() < DILEMMA_TOKARIEW_DEFAULT_DPI);
+    }
+}
+
 #    ifdef DILEMMA_AUTO_SNIPING_ON_LAYER
 layer_state_t layer_state_set_user(layer_state_t state) {
     dilemma_set_pointer_sniping_enabled(layer_state_cmp(state, DILEMMA_AUTO_SNIPING_ON_LAYER));
