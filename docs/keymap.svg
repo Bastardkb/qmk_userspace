@@ -190,11 +190,15 @@ rect.combo { fill: #ddd6fe; }
 <g transform="translate(252, 28)" class="key keypos-4">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">T</text>
-</g>
+<a href="#Ptr">
+<text x="0" y="24" class="key hold layer-activator">Ptr</text>
+</a></g>
 <g transform="translate(644, 28)" class="key keypos-5">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Y</text>
-</g>
+<a href="#Ptr">
+<text x="0" y="24" class="key hold layer-activator">Ptr</text>
+</a></g>
 <g transform="translate(700, 28)" class="key keypos-6">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">U</text>
@@ -272,13 +276,12 @@ rect.combo { fill: #ddd6fe; }
 <g transform="translate(28, 140)" class="key keypos-20">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Z</text>
-<a href="#Ptr">
-<text x="0" y="24" class="key hold layer-activator">Ptr</text>
-</a></g>
+<text x="0" y="24" class="key hold">Gui</text>
+</g>
 <g transform="translate(84, 140)" class="key keypos-21">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">X</text>
-<text x="0" y="24" class="key hold">Gui</text>
+<text x="0" y="24" class="key hold">Sft</text>
 </g>
 <g transform="translate(140, 140)" class="key keypos-22">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -288,7 +291,7 @@ rect.combo { fill: #ddd6fe; }
 <g transform="translate(196, 140)" class="key keypos-23">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">V</text>
-<text x="0" y="24" class="key hold">Sft</text>
+<text x="0" y="24" class="key hold">Ctl</text>
 </g>
 <g transform="translate(252, 140)" class="key keypos-24">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -312,14 +315,13 @@ rect.combo { fill: #ddd6fe; }
 <g transform="translate(812, 140)" class="key keypos-28">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">.</text>
-<text x="0" y="24" class="key hold">Gui</text>
+<text x="0" y="24" class="key hold">Sft</text>
 </g>
 <g transform="translate(868, 140)" class="key keypos-29">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">/</text>
-<a href="#Ptr">
-<text x="0" y="24" class="key hold layer-activator">Ptr</text>
-</a></g>
+<text x="0" y="24" class="key hold">Gui</text>
+</g>
 <g transform="translate(252, 196)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Ctl</text>

@@ -81,11 +81,12 @@ enum custom_keycodes {
 #define HR_J LT(LAYER_NAVIGATION, KC_J)
 #define HR_K LT(LAYER_SYMBOLS,    KC_K)
 #define HR_L LT(LAYER_NUMERAL,    KC_L)
-// Pinky-column layer holds: A and P reach Media; z and / reach the Pointer layer.
-#define A_MED    LT(LAYER_MEDIA,   KC_A)
-#define P_MED    LT(LAYER_MEDIA,   KC_P)
-#define Z_PTR    LT(LAYER_POINTER, KC_Z)
-#define SLSH_PTR LT(LAYER_POINTER, KC_SLSH)
+// Pinky-column layer holds: A and P reach Media. The top-row index keys T and Y
+// reach the Pointer layer (tap types the letter).
+#define A_MED LT(LAYER_MEDIA,   KC_A)
+#define P_MED LT(LAYER_MEDIA,   KC_P)
+#define T_PTR LT(LAYER_POINTER, KC_T)
+#define Y_PTR LT(LAYER_POINTER, KC_Y)
 // Right inner thumb: hold = Left Alt, tap = Gui+F12.
 // The placeholder tap (F12) is remapped to Gui+F12 in process_record_user,
 // since a mod-tap can only carry a basic keycode.
@@ -99,34 +100,41 @@ enum custom_keycodes {
 // Ctrl+wheel (zoom in most apps). Tap types b. Handled in process_record_user.
 #define B_ZOOM LT(0, KC_B)
 
-// Bottom-row mod-taps (tap = letter, hold = modifier).
-#define MT_X LGUI_T(KC_X)
+// Bottom-row mod-taps (tap = letter, hold = modifier). Mirror-symmetric across
+// the hands: Gui on the pinkies, Shift on the rings, Alt on the middles, Ctrl on
+// the index keys. Left hand uses L* mods, right hand uses R* mods for clean
+// cross-hand chording.
+#define MT_Z LGUI_T(KC_Z)
+#define MT_X LSFT_T(KC_X)
 #define MT_C LALT_T(KC_C)
-#define MT_V LSFT_T(KC_V)
-// Right-hand mods use the RIGHT-hand modifiers for clean cross-hand chording
-// (the export used left-hand mods here; switched to R* variants).
+#define MT_V LCTL_T(KC_V)
 #define MT_M RCTL_T(KC_M)
 // Comma holds Left Alt (not Right Alt): Right Alt is the Compose key, so it must
-// not be used as a modifier anywhere in the keymap.
+// not be used as a modifier anywhere in the keymap. This is the one asymmetry —
+// its mirror twin (Alt on the left middle) is a proper LALT.
 #define MT_COMM LALT_T(KC_COMM)
-#define MT_DOT RGUI_T(KC_DOT)
+#define MT_DOT  RSFT_T(KC_DOT)
+#define MT_SLSH RGUI_T(KC_SLSH)
 
 // clang-format off
 /**
  * \brief Base layer.
  *
- *   Q     W     E     R     T          Y     U     I     O   Esc/media
+ *   Q     W     E     R    T/ptr      Y/ptr  U     I     O   Esc/media
  *   A     S     D     F     G          H     J     K     L     P        (home-row layer-taps)
  *   Z     X     C     V     B          N     M     ,     .     /        (bottom-row mod-taps)
  *            Ctl  Gui/Spc Btn1     Alt/Gui+F12  Sft
  *
- * Pinky-column holds: A / P -> Media; z / -> Pointer. Home index G / H
- * drag-scroll the trackball. (Taps unchanged.)
+ * Pinky-column holds: A / P -> Media. Top-row index T / Y -> Pointer. Home
+ * index G / H drag-scroll the trackball. (Taps unchanged.)
+ *
+ * Bottom-row mod-taps mirror across the hands: Gui (Z //) Shift (X .) Alt (C ,)
+ * Ctrl (V M), pinky -> index on each side.
  */
 #define LAYOUT_LAYER_BASE                                                             \
-       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,  KC_ESC, \
+       KC_Q,    KC_W,    KC_E,    KC_R,   T_PTR,   Y_PTR,    KC_U,    KC_I,    KC_O,  KC_ESC, \
       A_MED,    HR_S,    HR_D,    HR_F,   G_SCR,   H_SCR,    HR_J,    HR_K,    HR_L,   P_MED, \
-      Z_PTR,    MT_X,    MT_C,    MT_V,  B_ZOOM,    KC_N,    MT_M, MT_COMM,  MT_DOT, SLSH_PTR, \
+       MT_Z,    MT_X,    MT_C,    MT_V,  B_ZOOM,    KC_N,    MT_M, MT_COMM,  MT_DOT, MT_SLSH, \
                      OSM(MOD_LCTL), LGUI_T(KC_SPC), KC_BTN1, ALT_F12, OSM(MOD_LSFT)
 
 /**

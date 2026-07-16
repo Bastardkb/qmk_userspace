@@ -7,8 +7,8 @@ layers:
     - "W"
     - "E"
     - "R"
-    - "T"
-    - "Y"
+    - {t: "T", h: "Ptr"}
+    - {t: "Y", h: "Ptr"}
     - "U"
     - "I"
     - "O"
@@ -23,16 +23,16 @@ layers:
     - {t: "K", h: "Sym"}
     - {t: "L", h: "Num"}
     - {t: "P", h: "Media"}
-    - {t: "Z", h: "Ptr"}
-    - {t: "X", h: "Gui"}
+    - {t: "Z", h: "Gui"}
+    - {t: "X", h: "Sft"}
     - {t: "C", h: "Alt"}
-    - {t: "V", h: "Sft"}
+    - {t: "V", h: "Ctl"}
     - {t: "B", h: "Zoom"}
     - "N"
     - {t: "M", h: "Ctl"}
     - {t: ",", h: "Alt"}
-    - {t: ".", h: "Gui"}
-    - {t: "/", h: "Ptr"}
+    - {t: ".", h: "Sft"}
+    - {t: "/", h: "Gui"}
     - "Ctl"
     - {t: "Spc", h: "Gui"}
     - "M1"
