@@ -1,19 +1,8 @@
 {
     "userspace_version": "1.0",
     "build_targets": [
-        ["bastardkb/dilemma/3x5_3_procyon", "vendor"],
-        ["bastardkb/dilemma/4x6_4_procyon", "vendor"],
-        ["bastardkb/charybdis/4x6/splinktegrated_rev1", "vendor"],
-        ["bastardkb/charybdis/3x6/splinktegrated_rev1", "vendor"],
-        ["bastardkb/charybdis/3x5/splinktegrated_rev1", "vendor"], 
-        ["bastardkb/charybdis/4x6_left/splinktegrated_rev1", "vendor"],
-        ["bastardkb/charybdis/3x6_left/splinktegrated_rev1", "vendor"],
-        ["bastardkb/charybdis/3x5_left/splinktegrated_rev1", "vendor"],
-        ["bastardkb/dilemma/4x6_4", "vendor"],
-        ["bastardkb/dilemma/3x5_3", "vendor"],
-        ["bastardkb/dilemma/3x5_2", "vendor"],
-        ["bastardkb/scylla/splinktegrated_rev1", "vendor"],
-        ["bastardkb/tbkmini/splinktegrated_rev1", "vendor"],
-        ["bastardkb/skeletyl/splinktegrated_rev1", "vendor"]
+        ["bastardkb/charybdis/4x6/splinktegrated_rev1", "jason8301"],
+        ["bastardkb/charybdis/4x6_left/splinktegrated_rev1", "jason8301"]
+
     ]
 }
