@@ -105,15 +105,15 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_LAYER_MEDIA                                                                    \
     XXXXXXX,RM_PREV, RM_TOGG, RM_NEXT, XXXXXXX, XXXXXXX,RM_PREV, RM_TOGG, RM_NEXT, XXXXXXX, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, \
-    XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT,  EE_CLR, XXXXXXX, XXXXXXX, XXXXXXX, \
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
                       _______, KC_MPLY, KC_MSTP, KC_MSTP, KC_MPLY
 
 /** \brief Mouse emulation and pointer functions. */
 #define LAYOUT_LAYER_POINTER                                                                  \
-    QK_BOOT,  EE_CLR, XXXXXXX, DPI_MOD, S_D_MOD, S_D_MOD, DPI_MOD, XXXXXXX,  EE_CLR, QK_BOOT, \
-    ______________HOME_ROW_GACS_L______________, ______________HOME_ROW_GACS_R______________, \
-    _______, DRGSCRL, SNIPING, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, _______, \
-                      MS_BTN2, MS_BTN1, MS_BTN3, MS_BTN3, MS_BTN1
+    PZOOM,   PVOLUME, PTABS,   DPI_MOD, S_D_MOD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, PHIST  , ______________HOME_ROW_GACS_R______________, \
+    _______, DRGSCRL, SNIPING, CURSOR,  PBRIGHT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
+                      MS_BTN2, MS_BTN1, MS_BTN3, XXXXXXX, XXXXXXX
 
 /**
  * \brief Navigation layer.
@@ -196,7 +196,7 @@ static uint16_t auto_pointer_layer_timer = 0;
              L10,         L11,         L12,         L13,         L14,  \
              R15,         R16,         R17,         R18,         R19,  \
       _L_PTR(L20),        L21,         L22,         L23,         L24,  \
-             R25,         R26,         R27,         R28,  _L_PTR(R29), \
+             R25,         R26,         R27,         R28,         R29, \
       __VA_ARGS__
 #define POINTER_MOD(...) _POINTER_MOD(__VA_ARGS__)
 

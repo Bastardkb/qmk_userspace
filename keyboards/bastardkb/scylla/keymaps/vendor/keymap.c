@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Quentin LEBASTARD <qlebastard@gmail.com>
+ * Copyright 2021 Quentin LEBASTARD <bstkbd@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [1] = LAYOUT_split_4x6_5(KC_TILD, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,
                              //---------------------------------------------------------//-----------------------------------------------------------//
-                             QK_BOOT, _______, _______, _______, _______, KC_LBRC, KC_RBRC, KC_P7, KC_P8, KC_P9, _______, KC_PLUS,
+                             XXXXXXX, _______, _______, _______, _______, KC_LBRC, KC_RBRC, KC_P7, KC_P8, KC_P9, _______, KC_PLUS,
                              //---------------------------------------------------------//-----------------------------------------------------------//
                              _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END, KC_LPRN, KC_RPRN, KC_P4, KC_P5, KC_P6, KC_MINS, KC_PIPE,
                              //---------------------------------------------------------//-----------------------------------------------------------//
@@ -47,5 +47,5 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              //---------------------------------------------------------//--------------------------------------------------------------//
                              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_VOLD,
                              //---------------------------------------------------------//--------------------------------------------------------------//
-                             KC_LCTL, KC_HOME, KC_TRNS, KC_TRNS, KC_RALT, QK_BOOT, KC_SPC, KC_BSPC, KC_RCTL, KC_ENT),
+                             KC_LCTL, KC_HOME, KC_TRNS, KC_TRNS, KC_RALT, XXXXXXX, KC_SPC, KC_BSPC, KC_RCTL, KC_ENT),
 };
