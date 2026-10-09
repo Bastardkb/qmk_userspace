@@ -2,6 +2,7 @@
     "userspace_version": "1.0",
     "build_targets": [
         ["bastardkb/dilemma/3x5_3_procyon", "vendor"],
+        ["bastardkb/dilemma/3x5_3_trackball", "vendor"],
         ["bastardkb/dilemma/4x6_4_procyon", "vendor"],
         ["bastardkb/charybdis/4x6/splinktegrated_rev1", "vendor"],
         ["bastardkb/charybdis/3x6/splinktegrated_rev1", "vendor"],
